@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473EF17E287266551FB20DAB /* Pods_SpaceXRockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FA326976FABF1B11A2B450 /* Pods_SpaceXRockets.framework */; };
+		7FA0CC79174FB57EEAAE37F9 /* Pods_SpaceXRocketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B1F37C3884FD9E10807B9 /* Pods_SpaceXRocketsTests.framework */; };
+		9D63612C27E49818002EDA8F /* usefule_methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612B27E49818002EDA8F /* usefule_methods.swift */; };
 		9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFB927E30830007EC913 /* AppDelegate.swift */; };
 		9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */; };
 		9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBD27E30830007EC913 /* ViewController.swift */; };
@@ -16,6 +19,15 @@
 		9DF6EFD127E30832007EC913 /* SpaceXRocketsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFD027E30832007EC913 /* SpaceXRocketsTests.swift */; };
 		9DF6EFDB27E30832007EC913 /* SpaceXRocketsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFDA27E30832007EC913 /* SpaceXRocketsUITests.swift */; };
 		9DF6EFDD27E30832007EC913 /* SpaceXRocketsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFDC27E30832007EC913 /* SpaceXRocketsUITestsLaunchTests.swift */; };
+		9DF6EFED27E36D07007EC913 /* network_service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFEC27E36D07007EC913 /* network_service.swift */; };
+		9DF6EFF227E39972007EC913 /* bottom_sheet_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF127E39972007EC913 /* bottom_sheet_controller.swift */; };
+		9DF6EFF427E39ED0007EC913 /* rocket_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF327E39ED0007EC913 /* rocket_data.swift */; };
+		9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF527E3B115007EC913 /* presenter.swift */; };
+		9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */; };
+		9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */; };
+		9DF6EFFC27E3CB42007EC913 /* bottom_sheet_presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */; };
+		9DF6F00027E4504A007EC913 /* default_units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFF27E4504A007EC913 /* default_units.swift */; };
+		FA22F549D776A733D8382CAD /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A3B1F37C3884FD9E10807B9 /* Pods_SpaceXRocketsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXRocketsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B1D2F5749A54B9C4C3A72D9 /* Pods-SpaceXRockets-SpaceXRocketsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets-SpaceXRocketsUITests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3350B0BF7F9FDA0DB1B5CB7A /* Pods-SpaceXRocketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRocketsTests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRocketsTests/Pods-SpaceXRocketsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FE97CD8E0F47537853B743A /* Pods-SpaceXRockets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets.release.xcconfig"; sourceTree = "<group>"; };
+		92363DCBB936F1B5ADC25D40 /* Pods-SpaceXRockets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets.debug.xcconfig"; sourceTree = "<group>"; };
+		9D63612B27E49818002EDA8F /* usefule_methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usefule_methods.swift; sourceTree = "<group>"; };
 		9DF6EFB627E30830007EC913 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFB927E30830007EC913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +67,18 @@
 		9DF6EFD627E30832007EC913 /* SpaceXRocketsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXRocketsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFDA27E30832007EC913 /* SpaceXRocketsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXRocketsUITests.swift; sourceTree = "<group>"; };
 		9DF6EFDC27E30832007EC913 /* SpaceXRocketsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXRocketsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9DF6EFEC27E36D07007EC913 /* network_service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = network_service.swift; sourceTree = "<group>"; };
+		9DF6EFF127E39972007EC913 /* bottom_sheet_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_sheet_controller.swift; sourceTree = "<group>"; };
+		9DF6EFF327E39ED0007EC913 /* rocket_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocket_data.swift; sourceTree = "<group>"; };
+		9DF6EFF527E3B115007EC913 /* presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = presenter.swift; sourceTree = "<group>"; };
+		9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView.swift; sourceTree = "<group>"; };
+		9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView_cell.swift; sourceTree = "<group>"; };
+		9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_sheet_presenter.swift; sourceTree = "<group>"; };
+		9DF6EFFF27E4504A007EC913 /* default_units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = default_units.swift; sourceTree = "<group>"; };
+		C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXRockets_SpaceXRocketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D22D42DA8C4C0F67D0AEC391 /* Pods-SpaceXRocketsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRocketsTests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRocketsTests/Pods-SpaceXRocketsTests.release.xcconfig"; sourceTree = "<group>"; };
+		D9B8301E461CE1D8B803CB84 /* Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E3FA326976FABF1B11A2B450 /* Pods_SpaceXRockets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXRockets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473EF17E287266551FB20DAB /* Pods_SpaceXRockets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA0CC79174FB57EEAAE37F9 /* Pods_SpaceXRocketsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +102,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA22F549D776A733D8382CAD /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078B26E00AAA22A26E7082F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92363DCBB936F1B5ADC25D40 /* Pods-SpaceXRockets.debug.xcconfig */,
+				8FE97CD8E0F47537853B743A /* Pods-SpaceXRockets.release.xcconfig */,
+				D9B8301E461CE1D8B803CB84 /* Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig */,
+				2B1D2F5749A54B9C4C3A72D9 /* Pods-SpaceXRockets-SpaceXRocketsUITests.release.xcconfig */,
+				3350B0BF7F9FDA0DB1B5CB7A /* Pods-SpaceXRocketsTests.debug.xcconfig */,
+				D22D42DA8C4C0F67D0AEC391 /* Pods-SpaceXRocketsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8F290D749F4DA411266B2479 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3FA326976FABF1B11A2B450 /* Pods_SpaceXRockets.framework */,
+				C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */,
+				2A3B1F37C3884FD9E10807B9 /* Pods_SpaceXRocketsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9DF6EFAD27E30830007EC913 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +139,8 @@
 				9DF6EFCF27E30832007EC913 /* SpaceXRocketsTests */,
 				9DF6EFD927E30832007EC913 /* SpaceXRocketsUITests */,
 				9DF6EFB727E30830007EC913 /* Products */,
+				078B26E00AAA22A26E7082F7 /* Pods */,
+				8F290D749F4DA411266B2479 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +157,12 @@
 		9DF6EFB827E30830007EC913 /* SpaceXRockets */ = {
 			isa = PBXGroup;
 			children = (
+				9DF6EFEE27E3947F007EC913 /* presenters */,
+				9DF6EFEB27E359F6007EC913 /* models */,
+				9DF6EFEA27E359ED007EC913 /* views */,
+				9DF6EFE927E359DA007EC913 /* controllers */,
 				9DF6EFB927E30830007EC913 /* AppDelegate.swift */,
 				9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */,
-				9DF6EFBD27E30830007EC913 /* ViewController.swift */,
 				9DF6EFBF27E30830007EC913 /* Main.storyboard */,
 				9DF6EFC227E30832007EC913 /* Assets.xcassets */,
 				9DF6EFC427E30832007EC913 /* LaunchScreen.storyboard */,
@@ -127,6 +188,44 @@
 			path = SpaceXRocketsUITests;
 			sourceTree = "<group>";
 		};
+		9DF6EFE927E359DA007EC913 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9DF6EFBD27E30830007EC913 /* ViewController.swift */,
+				9DF6EFF127E39972007EC913 /* bottom_sheet_controller.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		9DF6EFEA27E359ED007EC913 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */,
+				9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		9DF6EFEB27E359F6007EC913 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				9DF6EFEC27E36D07007EC913 /* network_service.swift */,
+				9DF6EFF327E39ED0007EC913 /* rocket_data.swift */,
+				9DF6EFFF27E4504A007EC913 /* default_units.swift */,
+				9D63612B27E49818002EDA8F /* usefule_methods.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		9DF6EFEE27E3947F007EC913 /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+				9DF6EFF527E3B115007EC913 /* presenter.swift */,
+				9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */,
+			);
+			path = presenters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF6EFE027E30832007EC913 /* Build configuration list for PBXNativeTarget "SpaceXRockets" */;
 			buildPhases = (
+				A4733385BC62B402D310BBC2 /* [CP] Check Pods Manifest.lock */,
 				9DF6EFB227E30830007EC913 /* Sources */,
 				9DF6EFB327E30830007EC913 /* Frameworks */,
 				9DF6EFB427E30830007EC913 /* Resources */,
+				D2BA70AD8C2A7622E85BD2CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF6EFE327E30832007EC913 /* Build configuration list for PBXNativeTarget "SpaceXRocketsTests" */;
 			buildPhases = (
+				49224C14D6C97E8D6D8A2645 /* [CP] Check Pods Manifest.lock */,
 				9DF6EFC827E30832007EC913 /* Sources */,
 				9DF6EFC927E30832007EC913 /* Frameworks */,
 				9DF6EFCA27E30832007EC913 /* Resources */,
@@ -169,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DF6EFE627E30832007EC913 /* Build configuration list for PBXNativeTarget "SpaceXRocketsUITests" */;
 			buildPhases = (
+				0849337C4F31F4D9A77A8CF4 /* [CP] Check Pods Manifest.lock */,
 				9DF6EFD227E30832007EC913 /* Sources */,
 				9DF6EFD327E30832007EC913 /* Frameworks */,
 				9DF6EFD427E30832007EC913 /* Resources */,
+				5EC0C1C08FDD27A7EFFE2101 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,14 +357,126 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0849337C4F31F4D9A77A8CF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpaceXRockets-SpaceXRocketsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49224C14D6C97E8D6D8A2645 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpaceXRocketsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EC0C1C08FDD27A7EFFE2101 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4733385BC62B402D310BBC2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpaceXRockets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2BA70AD8C2A7622E85BD2CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DF6EFB227E30830007EC913 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D63612C27E49818002EDA8F /* usefule_methods.swift in Sources */,
+				9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */,
+				9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */,
+				9DF6EFED27E36D07007EC913 /* network_service.swift in Sources */,
+				9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */,
+				9DF6EFF427E39ED0007EC913 /* rocket_data.swift in Sources */,
+				9DF6EFF227E39972007EC913 /* bottom_sheet_controller.swift in Sources */,
+				9DF6F00027E4504A007EC913 /* default_units.swift in Sources */,
 				9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */,
 				9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */,
 				9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */,
+				9DF6EFFC27E3CB42007EC913 /* bottom_sheet_presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +650,7 @@
 		};
 		9DF6EFE127E30832007EC913 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92363DCBB936F1B5ADC25D40 /* Pods-SpaceXRockets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -462,6 +679,7 @@
 		};
 		9DF6EFE227E30832007EC913 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FE97CD8E0F47537853B743A /* Pods-SpaceXRockets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -490,6 +708,7 @@
 		};
 		9DF6EFE427E30832007EC913 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3350B0BF7F9FDA0DB1B5CB7A /* Pods-SpaceXRocketsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +729,7 @@
 		};
 		9DF6EFE527E30832007EC913 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D22D42DA8C4C0F67D0AEC391 /* Pods-SpaceXRocketsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +750,7 @@
 		};
 		9DF6EFE727E30832007EC913 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9B8301E461CE1D8B803CB84 /* Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -548,6 +769,7 @@
 		};
 		9DF6EFE827E30832007EC913 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B1D2F5749A54B9C4C3A72D9 /* Pods-SpaceXRockets-SpaceXRocketsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
