@@ -24,9 +24,9 @@ class BottomScrollViewCell : UIView{
     }()
     private var unitsLabel : UILabel = {
         var unitsLabel = UILabel()
-        unitsLabel.font = .systemFont(ofSize: 14)
+        unitsLabel.font = .systemFont(ofSize: 18)
         unitsLabel.adjustsFontSizeToFitWidth = true
-        unitsLabel.textColor = .white
+        unitsLabel.textColor = UIColor(red: 0.142, green: 0.142, blue: 0.143, alpha: 1)
         unitsLabel.minimumScaleFactor = 1
         unitsLabel.textAlignment = .center
         return unitsLabel
@@ -48,7 +48,7 @@ class BottomScrollViewCell : UIView{
         }
         addSubview(view)
         view.snp.makeConstraints { make in
-            view.backgroundColor = .gray
+            view.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 0.7)
             view.layer.cornerRadius = 40
             make.centerX.centerY.equalTo(self)
             make.height.equalTo(self).dividedBy(1.2)

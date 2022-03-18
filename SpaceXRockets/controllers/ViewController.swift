@@ -7,17 +7,15 @@
 
 import UIKit
 import SnapKit
+import UBottomSheet
 
 class ViewController: UIViewController {
+    
     let bottomController = BottomSheetController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addChild(bottomController)
-        view.addSubview(bottomController.view)
-        bottomController.didMove(toParent: self)
-        bottomController.view.snp.makeConstraints { make in
-            make.bottom.centerX.equalToSuperview()
-            make.width.height.equalToSuperview()
-        }
+        var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
+        bottomController.sheetCoordinator = sheet
+        sheet.addSheet(bottomController, to: self)
     }
 }
