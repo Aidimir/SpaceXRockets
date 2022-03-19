@@ -26,7 +26,6 @@
 		9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF527E3B115007EC913 /* presenter.swift */; };
 		9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */; };
 		9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */; };
-		9DF6EFFC27E3CB42007EC913 /* bottom_sheet_presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */; };
 		9DF6F00027E4504A007EC913 /* default_units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFF27E4504A007EC913 /* default_units.swift */; };
 		FA22F549D776A733D8382CAD /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,7 +74,6 @@
 		9DF6EFF527E3B115007EC913 /* presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = presenter.swift; sourceTree = "<group>"; };
 		9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView.swift; sourceTree = "<group>"; };
 		9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView_cell.swift; sourceTree = "<group>"; };
-		9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_sheet_presenter.swift; sourceTree = "<group>"; };
 		9DF6EFFF27E4504A007EC913 /* default_units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = default_units.swift; sourceTree = "<group>"; };
 		C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXRockets_SpaceXRocketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22D42DA8C4C0F67D0AEC391 /* Pods-SpaceXRocketsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRocketsTests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRocketsTests/Pods-SpaceXRocketsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				9DF6EFF527E3B115007EC913 /* presenter.swift */,
-				9DF6EFFB27E3CB42007EC913 /* bottom_sheet_presenter.swift */,
 			);
 			path = presenters;
 			sourceTree = "<group>";
@@ -480,7 +477,6 @@
 				9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */,
 				9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */,
 				9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */,
-				9DF6EFFC27E3CB42007EC913 /* bottom_sheet_presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

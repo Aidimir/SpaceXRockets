@@ -10,23 +10,31 @@ import SnapKit
 import UBottomSheet
 import Kingfisher
 class ViewController: UIViewController, UserPresenterDelegate{
-    let scrollView : UIScrollView = {
+    private let scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
         return scrollView
     }()
-    let massiveView = UIView()
-    let stackView : UIStackView = {
+    let spinner = UIActivityIndicatorView()
+    private let massiveView = UIView()
+    private let stackView : UIStackView = {
         let stack = UIStackView()
         stack.distribution = .fillEqually
         stack.axis = .horizontal
         return stack
     }()
+    func errorHandler() {
+        let errorImgView = UIImageView(image: UIImage(named: "errorImage"))
+        spinner.removeFromSuperview()
+        errorImgView.frame = view.frame
+        view.addSubview(errorImgView)
+    }
     func presentRockets(rocketsDict: [String : RocketData]) {
+        spinner.removeFromSuperview()
         var pages = [RocketPageController]()
-        for i in rocketsDict{
+        for i in rocketsDict.sorted{$0.0 < $1.0}{
             let rocketPage : RocketPageController = {
-                var rocket = RocketPageController()
+                let rocket = RocketPageController()
                 rocket.rocket = rocketsDict[i.key]
                 rocket.view.frame = view.frame
                 addChild(rocket)
@@ -55,7 +63,13 @@ class ViewController: UIViewController, UserPresenterDelegate{
     let presenter = Presenter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         presenter.setDelegate(delegate: self)
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        spinner.snp.makeConstraints { make in
+            make.center.width.height.equalToSuperview()
+        }
         presenter.fetchData()
     }
 }

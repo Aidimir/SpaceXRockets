@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 protocol UserPresenterDelegate {
     func presentRockets(rocketsDict : [String : RocketData])
+    func errorHandler()
 }
 typealias PresenterDelegate = UserPresenterDelegate & UIViewController
 class Presenter {
@@ -16,7 +17,12 @@ class Presenter {
     func fetchData(){
         if rocketsDictionary.isEmpty{
             NetworkService().getData { [weak self] dict in
-                self?.delegate?.presentRockets(rocketsDict: dict)
+                if dict != nil{
+                    self?.delegate?.presentRockets(rocketsDict: dict!)
+                }
+                else{
+                    self?.delegate?.errorHandler()
+                }
             }
         }
         else{

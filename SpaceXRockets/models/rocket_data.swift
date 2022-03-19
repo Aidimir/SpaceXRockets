@@ -11,10 +11,10 @@ struct RocketData{
     var name : String //name
     var firstLaunch : String //first_flight
     var country : String //country
-    var launchCost : Double //cost_per_launch
+    var launchCost : String //cost_per_launch
     var allLaunches : [String : String]
-    var firstStage : [String : Double] //first_stage
-    var secondStage : [String : Double] //second_stage
+    var firstStage : [String : String] //first_stage
+    var secondStage : [String : String] //second_stage
     var height : Dictionary<String,Double> //height
     var diameter : Dictionary<String,Double> //diameter
     var mass : Dictionary<String,Double> //mass
