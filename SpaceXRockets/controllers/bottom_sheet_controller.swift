@@ -11,7 +11,8 @@ import SnapKit
 import UBottomSheet
 
 class BottomSheetController: UIViewController, BottomSheetDelegate,Draggable{
-    var scroll = UIScrollView()
+    private var scroll = UIScrollView()
+    var rocket : RocketData?
     func presentConstructor(cellArray: [BottomScrollViewCell], header: UILabel) {
         var filler = UIView()
         var bottomScroll = BottomScrollView(cells: cellArray)
@@ -48,7 +49,7 @@ class BottomSheetController: UIViewController, BottomSheetDelegate,Draggable{
         super.viewDidLoad()
         view.backgroundColor = .black
         presenter.setDelegate(delegate: self)
-        presenter.fetchData()
+        presenter.createRocketBottomSheet(data: rocket!)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -35,14 +35,7 @@ class BottomSheetPresenter {
         }()
         self.createCells(data: data, header: header)
     }
-    func fetchData(){
-        if rocketsDictionary.isEmpty{
-            NetworkService().getData { dict in
-                self.createHeader(data: dict["Falcon Heavy"]!)
-            }
-        }
-        else{
-            self.createHeader(data: rocketsDictionary["Falcon Heavy"]!)
-        }
+    func createRocketBottomSheet(data : RocketData){
+        createHeader(data: data)
     }
 }

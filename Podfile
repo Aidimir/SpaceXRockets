@@ -8,7 +8,8 @@ target 'SpaceXRockets' do
  pod 'Alamofire' 
  pod 'SwiftyJSON' 
 pod 'UBottomSheet'
-#pod "FINNBottomSheet", git: "https://github.com/finn-no/BottomSheet.git"
+pod 'Kingfisher'
+
 
 
   # Pods for SpaceXRockets

@@ -13,9 +13,14 @@ protocol UserPresenterDelegate {
 typealias PresenterDelegate = UserPresenterDelegate & UIViewController
 class Presenter {
     weak var delegate : PresenterDelegate?
-    func fetchRocketsData(){
-        NetworkService().getData { dict in
-            self.delegate?.presentRockets(rocketsDict: dict)
+    func fetchData(){
+        if rocketsDictionary.isEmpty{
+            NetworkService().getData { [weak self] dict in
+                self?.delegate?.presentRockets(rocketsDict: dict)
+            }
+        }
+        else{
+            delegate?.presentRockets(rocketsDict: rocketsDictionary)
         }
     }
     func setDelegate(delegate : PresenterDelegate){
