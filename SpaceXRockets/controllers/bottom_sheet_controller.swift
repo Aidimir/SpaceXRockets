@@ -39,7 +39,7 @@ class BottomSheetController: UIViewController,Draggable{
         filler.addSubview(settingsButton)
         settingsButton.snp.makeConstraints { make in
             make.right.centerY.equalTo(header)
-            make.width.equalToSuperview().dividedBy(7)
+            make.width.equalToSuperview().dividedBy(9)
             make.height.equalToSuperview().dividedBy(25)
         }
         filler.addSubview(bottomScroll)
@@ -85,10 +85,6 @@ class BottomSheetController: UIViewController,Draggable{
         scroll.snp.makeConstraints { make in
             make.bottom.height.left.right.width.equalToSuperview()
         }
-//        That's how changeValues func will work
-//        defaultUnits["height"] = "feet"
-//        defaultUnits["mass"] = "lb"
-//        NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
     }
     var sheetCoordinator: UBottomSheetCoordinator?
     override func viewDidLoad() {
@@ -205,7 +201,7 @@ class BottomSheetController: UIViewController,Draggable{
     }
     
     @objc func onTap(){
-        print("tapped")
+        present(SettingPageController(), animated: true, completion: nil)
     }
     func createSettingsButton() -> UIButton{
         let button = UIButton()

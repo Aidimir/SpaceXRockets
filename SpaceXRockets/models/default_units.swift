@@ -7,11 +7,12 @@
 
 import Foundation
 
-var defaultUnits = ["mass" : "kg", "height" : "meters", "diameter" : "meters", "pressure" : "kg"]
+var defaultUnits = ["Масса" : "kg", "Высота" : "m", "Диаметр" : "m", "Полезная нагрузка" : "kg"]
 enum cellsEnum : String {
-    case mass = "mass"
-    case height = "height"
-    case diameter = "diameter"
-    case pressure = "pressure"
+    case mass = "Масса"
+    case height = "Высота"
+    case diameter = "Диаметр"
+    case pressure = "Полезная нагрузка"
 }
 var rocketsDictionary = [String: RocketData]()
+var allUnits = ["Масса" : ["kg", "lb"], "Высота" : ["m","ft"], "Диаметр" : ["m","ft"], "Полезная нагрузка" : ["kg", "lb"]]

@@ -9,12 +9,4 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SwitchButton : UIButton{
-    var parameter : String?
-    func setup(){}
-    @objc func onTap(){
-                defaultUnits["height"] = "feet"
-                defaultUnits["mass"] = "lb"
-                NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
-    }
-}
+

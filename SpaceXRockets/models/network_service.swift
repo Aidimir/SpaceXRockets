@@ -49,8 +49,15 @@ class NetworkService {
                         firstStage[key] = removeUselessZero(num: Double(value)!)
                     }
                 }
-                let height = jsonData[i]["height"].rawValue as! Dictionary<String,Double>
-                let width = jsonData[i]["diameter"].rawValue as! Dictionary<String,Double>
+                let h = jsonData[i]["height"].rawValue as! Dictionary<String,Double>
+                var height = [String:Double]()
+                height ["m"] = h["meters"]
+                height["ft"] = h["feet"]
+                print(height)
+                let w = jsonData[i]["diameter"].rawValue as! Dictionary<String,Double>
+                var width = [String:Double]()
+                width["m"] = w["meters"]
+                width["ft"] = w["feet"]
                 let mass = jsonData[i]["mass"].rawValue as! Dictionary<String,Double>
                 let id = jsonData[i]["id"].rawValue as! String
                 var pressure = [String:Double]()
