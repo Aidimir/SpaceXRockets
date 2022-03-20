@@ -21,7 +21,9 @@ class RocketPageController: UIViewController{
         imgView.contentMode = .scaleToFill
         imgView.kf.setImage(with: URL(string: randomIngUrl!))
         view.addSubview(imgView)
-        imgView.frame = view.frame
+        imgView.snp.makeConstraints { make in
+            make.left.right.top.bottom.width.height.equalToSuperview()
+        }
         var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
         bottomController.sheetCoordinator = sheet
         sheet.addSheet(bottomController, to: self)

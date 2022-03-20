@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		473EF17E287266551FB20DAB /* Pods_SpaceXRockets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FA326976FABF1B11A2B450 /* Pods_SpaceXRockets.framework */; };
 		7FA0CC79174FB57EEAAE37F9 /* Pods_SpaceXRocketsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3B1F37C3884FD9E10807B9 /* Pods_SpaceXRocketsTests.framework */; };
-		9D63612C27E49818002EDA8F /* usefule_methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612B27E49818002EDA8F /* usefule_methods.swift */; };
+		9D63612C27E49818002EDA8F /* useful_methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612B27E49818002EDA8F /* useful_methods.swift */; };
 		9D63612E27E5BB57002EDA8F /* rocket_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */; };
+		9D63613027E76098002EDA8F /* settings_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612F27E76098002EDA8F /* settings_page_controller.swift */; };
+		9D63613227E76D1F002EDA8F /* switchButton_and_header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613127E76D1F002EDA8F /* switchButton_and_header.swift */; };
 		9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFB927E30830007EC913 /* AppDelegate.swift */; };
 		9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */; };
 		9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBD27E30830007EC913 /* ViewController.swift */; };
@@ -53,8 +55,10 @@
 		3350B0BF7F9FDA0DB1B5CB7A /* Pods-SpaceXRocketsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRocketsTests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRocketsTests/Pods-SpaceXRocketsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8FE97CD8E0F47537853B743A /* Pods-SpaceXRockets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets.release.xcconfig"; sourceTree = "<group>"; };
 		92363DCBB936F1B5ADC25D40 /* Pods-SpaceXRockets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets/Pods-SpaceXRockets.debug.xcconfig"; sourceTree = "<group>"; };
-		9D63612B27E49818002EDA8F /* usefule_methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usefule_methods.swift; sourceTree = "<group>"; };
+		9D63612B27E49818002EDA8F /* useful_methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = useful_methods.swift; sourceTree = "<group>"; };
 		9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocket_page_controller.swift; sourceTree = "<group>"; };
+		9D63612F27E76098002EDA8F /* settings_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings_page_controller.swift; sourceTree = "<group>"; };
+		9D63613127E76D1F002EDA8F /* switchButton_and_header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchButton_and_header.swift; sourceTree = "<group>"; };
 		9DF6EFB627E30830007EC913 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFB927E30830007EC913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				9DF6EFBD27E30830007EC913 /* ViewController.swift */,
 				9DF6EFF127E39972007EC913 /* bottom_sheet_controller.swift */,
 				9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */,
+				9D63612F27E76098002EDA8F /* settings_page_controller.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			children = (
 				9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */,
 				9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */,
+				9D63613127E76D1F002EDA8F /* switchButton_and_header.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -213,7 +219,7 @@
 				9DF6EFEC27E36D07007EC913 /* network_service.swift */,
 				9DF6EFF327E39ED0007EC913 /* rocket_data.swift */,
 				9DF6EFFF27E4504A007EC913 /* default_units.swift */,
-				9D63612B27E49818002EDA8F /* usefule_methods.swift */,
+				9D63612B27E49818002EDA8F /* useful_methods.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -466,10 +472,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63612E27E5BB57002EDA8F /* rocket_page_controller.swift in Sources */,
-				9D63612C27E49818002EDA8F /* usefule_methods.swift in Sources */,
+				9D63612C27E49818002EDA8F /* useful_methods.swift in Sources */,
 				9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */,
 				9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */,
+				9D63613027E76098002EDA8F /* settings_page_controller.swift in Sources */,
 				9DF6EFED27E36D07007EC913 /* network_service.swift in Sources */,
+				9D63613227E76D1F002EDA8F /* switchButton_and_header.swift in Sources */,
 				9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */,
 				9DF6EFF427E39ED0007EC913 /* rocket_data.swift in Sources */,
 				9DF6EFF227E39972007EC913 /* bottom_sheet_controller.swift in Sources */,

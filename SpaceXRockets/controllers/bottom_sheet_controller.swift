@@ -96,12 +96,14 @@ class BottomSheetController: UIViewController,Draggable{
         view.backgroundColor = .black
         if rocket != nil{
             construct()
+            sheetCoordinator?.startTracking(item: self)
         }
         else{}
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        sheetCoordinator?.setPosition(view.frame.maxY/1.25, animated: false)
         sheetCoordinator?.startTracking(item: self)
     }
     
