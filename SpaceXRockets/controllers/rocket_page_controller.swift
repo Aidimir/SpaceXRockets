@@ -16,8 +16,10 @@ class RocketPageController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomController.rocket = rocket
+        var randomIngUrl = rocket?.images.randomElement()
         var imgView = UIImageView()
-        imgView.kf.setImage(with: URL(string: "https://cdn.vox-cdn.com/thumbor/ryEjFL0uh-30k5okWpVPDF1uLjU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/23285493/51914370605_ac04ae277b_k.jpg"))
+        imgView.contentMode = .scaleToFill
+        imgView.kf.setImage(with: URL(string: randomIngUrl!))
         view.addSubview(imgView)
         imgView.frame = view.frame
         var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)

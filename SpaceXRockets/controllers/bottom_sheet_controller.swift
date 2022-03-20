@@ -30,7 +30,6 @@ class BottomSheetController: UIViewController,Draggable{
         let secondStageLabelStack = createStageLabels(engines: String(rocket!.firstStage["engines"]!), fuel: String(rocket!.firstStage["fuel_amount_tons"]!), time: String(rocket!.firstStage["burn_time_sec"]!), stage: "вторая ступень")
         var filler = UIView()
         var bottomScroll = BottomScrollView(cells: cellArray)
-        print(cellArray)
         bottomScroll.backgroundColor = .black
         filler.addSubview(header)
         header.snp.makeConstraints { make in
@@ -41,7 +40,7 @@ class BottomSheetController: UIViewController,Draggable{
         settingsButton.snp.makeConstraints { make in
             make.right.centerY.equalTo(header)
             make.width.equalToSuperview().dividedBy(7)
-            make.height.equalToSuperview().dividedBy(20)
+            make.height.equalToSuperview().dividedBy(25)
         }
         filler.addSubview(bottomScroll)
         bottomScroll.snp.makeConstraints { make in
@@ -210,6 +209,7 @@ class BottomSheetController: UIViewController,Draggable{
         let button = UIButton()
         button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
         let imgView = UIImageView(image: UIImage(systemName: "gearshape"))
+        imgView.tintColor = .white
         button.addSubview(imgView)
         imgView.snp.makeConstraints { make in
             make.center.width.height.equalTo(button)

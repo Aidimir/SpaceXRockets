@@ -19,4 +19,5 @@ struct RocketData{
     var diameter : Dictionary<String,Double> //diameter
     var mass : Dictionary<String,Double> //mass
     var pressure : Dictionary<String,Double>  //lb
+    var images : Array<String>
 }

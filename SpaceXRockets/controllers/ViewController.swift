@@ -9,11 +9,16 @@ import UIKit
 import SnapKit
 import UBottomSheet
 import Kingfisher
-class ViewController: UIViewController, UserPresenterDelegate{
+class ViewController: UIViewController, UserPresenterDelegate {
     private let scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
+    }()
+    private let pageControl : UIPageControl = {
+       let pgControl = UIPageControl()
+        return pgControl
     }()
     let spinner = UIActivityIndicatorView()
     private let massiveView = UIView()
@@ -31,6 +36,8 @@ class ViewController: UIViewController, UserPresenterDelegate{
     }
     func presentRockets(rocketsDict: [String : RocketData]) {
         spinner.removeFromSuperview()
+        scrollView.delegate = self
+        pageControl.numberOfPages = rocketsDict.count
         var pages = [RocketPageController]()
         for i in rocketsDict.sorted{$0.0 < $1.0}{
             let rocketPage : RocketPageController = {
@@ -57,7 +64,12 @@ class ViewController: UIViewController, UserPresenterDelegate{
         }
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
-            make.top.bottom.left.right.width.height.equalToSuperview()
+            make.top.left.right.width.height.equalToSuperview()
+//            make.height.equalToSuperview().multipliedBy(0.95)
+        }
+        view.addSubview(pageControl)
+        pageControl.snp.makeConstraints { make in
+            make.bottom.centerX.width.equalToSuperview()
         }
     }
     let presenter = Presenter()
@@ -71,5 +83,11 @@ class ViewController: UIViewController, UserPresenterDelegate{
             make.center.width.height.equalToSuperview()
         }
         presenter.fetchData()
+    }
+}
+
+extension ViewController : UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width)))
     }
 }

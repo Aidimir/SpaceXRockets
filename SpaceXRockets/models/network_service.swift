@@ -52,11 +52,13 @@ class NetworkService {
                 let height = jsonData[i]["height"].rawValue as! Dictionary<String,Double>
                 let width = jsonData[i]["diameter"].rawValue as! Dictionary<String,Double>
                 let mass = jsonData[i]["mass"].rawValue as! Dictionary<String,Double>
+                let id = jsonData[i]["id"].rawValue as! String
                 var pressure = [String:Double]()
                 pressure["lb"] = jsonData[i]["payload_weights"][0]["lb"].rawValue as! Double
                 pressure["kg"] = jsonData[i]["payload_weights"][0]["kg"].rawValue as! Double
                 var test = ["nickname" : "heavy sut" , "date" : "03 сентября 2003"]
-                dict[name] = RocketData(name: name, firstLaunch: firstLaunch, country: country, launchCost: launchCost, allLaunches: test, firstStage: firstStage, secondStage: secondStage, height: height, diameter: width, mass: mass, pressure: pressure)
+                var images = jsonData[i]["flickr_images"].rawValue as! Array<String>
+                dict[id] = RocketData(name: name, firstLaunch: firstLaunch, country: country, launchCost: launchCost, allLaunches: test, firstStage: firstStage, secondStage: secondStage, height: height, diameter: width, mass: mass, pressure: pressure, images: images)
             }
                 completionHandler(dict)
             }
@@ -64,5 +66,21 @@ class NetworkService {
                 completionHandler(nil)
             }
         }
+//        AF.request(rocketLaunchesRequest).response { response in
+//            let jsonData = JSON(response.data)
+//            var allNames = [String]()
+//            for (key, _) in dict{
+//                allNames.append(key)
+//            }
+//            var allRocketsLaunches = [String : [String: String]]()
+//            for i in allNames{
+//                allRocketsLaunches[i] = [String:String]()
+//            }
+//            for i in 0..<jsonData.count{
+//                if allNames.contains(jsonData[i]["rocket"].rawValue as! String){
+//                    allRocketsLaunches[jsonData[i]["rocket"].rawValue as! String]
+//                }
+//            }
+//        }
     }
 }
