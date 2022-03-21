@@ -94,6 +94,7 @@ class SettingsButton : UIView{
             defaultUnits[parameterName] = value1
         }
         NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
+        UserDefaults.standard.setValue(defaultUnits, forKey: "values")
     }
     init(parameterName : String,value1 : String, value2 : String){
         self.parameterName = parameterName

@@ -12,20 +12,75 @@ import Kingfisher
 
 class RocketPageController: UIViewController{
     var rocket : RocketData?
+    let imgView = UIImageView()
+    let scrollView = UIScrollView()
     let bottomController = BottomSheetController()
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomController.rocket = rocket
         var randomIngUrl = rocket?.images.randomElement()
-        var imgView = UIImageView()
         imgView.contentMode = .scaleToFill
         imgView.kf.setImage(with: URL(string: randomIngUrl!))
-        view.addSubview(imgView)
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onPullUp(sender: )), for: .valueChanged)
+        refreshControl.tintColor = .white
+        scrollView.refreshControl = refreshControl
+        scrollView.addSubview(imgView)
         imgView.snp.makeConstraints { make in
-            make.left.right.top.bottom.width.height.equalToSuperview()
+            make.left.right.top.bottom.width.equalTo(scrollView)
+            make.height.equalTo(scrollView).multipliedBy(0.5)
+        }
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.left.right.bottom.top.width.equalToSuperview()
+            make.height.equalToSuperview()
         }
         var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
         bottomController.sheetCoordinator = sheet
         sheet.addSheet(bottomController, to: self)
+    }
+    @objc func onPullUp(sender : UIRefreshControl){
+        sender.endRefreshing()
+        let newRandomImage = rocket?.images.randomElement()
+        imgView.kf.setImage(with: URL(string: newRandomImage!))
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let orient = UIApplication.shared.statusBarOrientation
+        switch orient {
+        case .unknown:
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+            }
+            
+        case .portrait:
+            print("portrait")
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+            }
+            
+        case .portraitUpsideDown:
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+
+            }
+            
+        case .landscapeLeft:
+            print("landscape left")
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+          }
+            
+        case .landscapeRight:
+            print("landscape right")
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.equalTo(scrollView)
+                make.height.equalTo(scrollView).multipliedBy(0.5)
+            }
+        }
+        super.viewWillTransition(to: size, with: coordinator)
     }
 }

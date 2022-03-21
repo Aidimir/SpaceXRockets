@@ -35,6 +35,9 @@ class ViewController: UIViewController, UserPresenterDelegate {
         view.addSubview(errorImgView)
     }
     func presentRockets(rocketsDict: [String : RocketData]) {
+        if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
+            defaultUnits = UserDefaults.standard.dictionary(forKey: "values") as! [String: String]
+        }
         spinner.removeFromSuperview()
         scrollView.delegate = self
         pageControl.numberOfPages = rocketsDict.count

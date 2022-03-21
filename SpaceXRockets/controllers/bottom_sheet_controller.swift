@@ -91,6 +91,7 @@ class BottomSheetController: UIViewController,Draggable{
     var sheetCoordinator: UBottomSheetCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(extremleCloseSheet), name: NSNotification.Name("closeSheet"), object: nil)
         view.backgroundColor = .black
         launchesController.modalPresentationStyle = .fullScreen
         launchesController.allRocketLaunches = rocket?.allLaunches
@@ -176,7 +177,7 @@ class BottomSheetController: UIViewController,Draggable{
     func createNoNameStack(data : RocketData) -> UIStackView{
         let label0 = createLabel(name: "Первый запуск", data: rocket!.firstLaunch)
         let label1 = createLabel(name: "Страна", data: rocket!.country)
-        let label2 = createLabel(name: "Стоимость запуска", data: "$" + String(Double(rocket!.launchCost)!  / 100) + " млн")
+        let label2 = createLabel(name: "Стоимость запуска", data: "$" + String(removeUselessZero(num: Double(rocket!.launchCost)!  / 1000000)) + " млн")
         let noNameLabelStack : UIStackView = {
             let stack = UIStackView(arrangedSubviews: [label0,label1,label2])
             stack.distribution = .fillEqually
@@ -223,5 +224,13 @@ class BottomSheetController: UIViewController,Draggable{
             make.center.width.height.equalTo(button)
         }
         return button
+    }
+    @objc func extremleCloseSheet(){
+        if UIApplication.shared.statusBarOrientation == .landscapeLeft{
+            sheetCoordinator?.setPosition(view.frame.minY/1.25, animated: false)
+        }
+        else{
+        sheetCoordinator?.setPosition(view.frame.maxY/1.25, animated: false)
+        }
     }
 }
