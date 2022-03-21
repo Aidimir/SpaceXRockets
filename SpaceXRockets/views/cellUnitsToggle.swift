@@ -18,18 +18,21 @@ class SettingsButton : UIView{
         label.font = .systemFont(ofSize: 20)
         label.textColor = .white
         label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     let label1 : UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     let label2 : UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     let valuesStack : UIStackView = {

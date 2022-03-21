@@ -13,6 +13,7 @@ import UBottomSheet
 class BottomSheetController: UIViewController,Draggable{
     private var scroll = UIScrollView()
     var rocket : RocketData?
+    let launchesController = LaunchesPageController()
     func construct() {
         var cellArray = createCells(data: rocket!)
         let header : UILabel = {
@@ -69,6 +70,7 @@ class BottomSheetController: UIViewController,Draggable{
             make.top.equalTo(firstStageLabelStack.snp.bottom).offset(view.frame.height/20)
             make.height.equalToSuperview().dividedBy(6)
         }
+        showAllButton.layer.masksToBounds = true
         filler.addSubview(showAllButton)
         showAllButton.snp.makeConstraints { make in
             make.centerX.equalTo(filler)
@@ -90,6 +92,7 @@ class BottomSheetController: UIViewController,Draggable{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        launchesController.allRocketLaunches = rocket?.allLaunches
         if rocket != nil{
             construct()
             sheetCoordinator?.startTracking(item: self)
@@ -123,6 +126,7 @@ class BottomSheetController: UIViewController,Draggable{
             nameLabel.textColor = UIColor(red: 0.202, green: 0.202, blue: 0.202, alpha: 1)
             nameLabel.textAlignment = .left
             nameLabel.text = name
+            nameLabel.adjustsFontSizeToFitWidth = true
             return nameLabel
         }()
         let dataLabel : UILabel = {
@@ -131,6 +135,7 @@ class BottomSheetController: UIViewController,Draggable{
             dataLabel.textColor = .white
             dataLabel.textAlignment = .right
             dataLabel.text = data
+            dataLabel.adjustsFontSizeToFitWidth = true
             return dataLabel
      }()
         
@@ -181,7 +186,7 @@ class BottomSheetController: UIViewController,Draggable{
     
     func createButton()-> UIButton{
         let button = UIButton()
-        button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showAllLaunches), for: .touchUpInside)
         button.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 0.5)
         button.layer.cornerRadius = 15
         let label : UILabel = {
@@ -195,13 +200,16 @@ class BottomSheetController: UIViewController,Draggable{
         }()
         button.addSubview(label)
         label.snp.makeConstraints { make in
-            make.center.equalTo(button)
+            make.center.width.height.equalTo(button)
         }
         return button
     }
     
     @objc func onTap(){
         present(SettingPageController(), animated: true, completion: nil)
+    }
+    @objc func showAllLaunches(){
+        present(launchesController,animated: true,completion: nil)
     }
     func createSettingsButton() -> UIButton{
         let button = UIButton()

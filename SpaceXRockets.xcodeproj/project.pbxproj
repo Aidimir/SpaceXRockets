@@ -13,6 +13,8 @@
 		9D63612E27E5BB57002EDA8F /* rocket_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */; };
 		9D63613027E76098002EDA8F /* settings_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63612F27E76098002EDA8F /* settings_page_controller.swift */; };
 		9D63613427E77ABF002EDA8F /* cellUnitsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613327E77ABF002EDA8F /* cellUnitsToggle.swift */; };
+		9D63613627E899E8002EDA8F /* launches_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613527E899E8002EDA8F /* launches_page_controller.swift */; };
+		9D63613827E89E16002EDA8F /* launchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613727E89E16002EDA8F /* launchView.swift */; };
 		9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFB927E30830007EC913 /* AppDelegate.swift */; };
 		9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */; };
 		9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBD27E30830007EC913 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocket_page_controller.swift; sourceTree = "<group>"; };
 		9D63612F27E76098002EDA8F /* settings_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings_page_controller.swift; sourceTree = "<group>"; };
 		9D63613327E77ABF002EDA8F /* cellUnitsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellUnitsToggle.swift; sourceTree = "<group>"; };
+		9D63613527E899E8002EDA8F /* launches_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launches_page_controller.swift; sourceTree = "<group>"; };
+		9D63613727E89E16002EDA8F /* launchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchView.swift; sourceTree = "<group>"; };
 		9DF6EFB627E30830007EC913 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFB927E30830007EC913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				9DF6EFF127E39972007EC913 /* bottom_sheet_controller.swift */,
 				9D63612D27E5BB57002EDA8F /* rocket_page_controller.swift */,
 				9D63612F27E76098002EDA8F /* settings_page_controller.swift */,
+				9D63613527E899E8002EDA8F /* launches_page_controller.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */,
 				9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */,
 				9D63613327E77ABF002EDA8F /* cellUnitsToggle.swift */,
+				9D63613727E89E16002EDA8F /* launchView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63612E27E5BB57002EDA8F /* rocket_page_controller.swift in Sources */,
+				9D63613827E89E16002EDA8F /* launchView.swift in Sources */,
 				9D63612C27E49818002EDA8F /* useful_methods.swift in Sources */,
 				9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */,
 				9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */,
@@ -480,6 +487,7 @@
 				9DF6EFED27E36D07007EC913 /* network_service.swift in Sources */,
 				9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */,
 				9DF6EFF427E39ED0007EC913 /* rocket_data.swift in Sources */,
+				9D63613627E899E8002EDA8F /* launches_page_controller.swift in Sources */,
 				9DF6EFF227E39972007EC913 /* bottom_sheet_controller.swift in Sources */,
 				9DF6F00027E4504A007EC913 /* default_units.swift in Sources */,
 				9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */,

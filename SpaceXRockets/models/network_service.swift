@@ -76,14 +76,14 @@ class NetworkService {
             pressure["kg"] = jsonData[i]["payload_weights"][0]["kg"].rawValue as! Double
             var test = ["heavy sut" : ["date" : "03 сентября 2003"]]
             var images = jsonData[i]["flickr_images"].rawValue as! Array<String>
-            var launchDict = [String:[String:Any]]()
+            var launchDict = [String:[String:String]]()
             for i in 0..<jsonLaunchData.count{
                     if id == jsonLaunchData[i]["rocket"].rawValue as! String{
                         let name = jsonLaunchData[i]["name"].rawValue as! String
                         if jsonLaunchData[i]["success"].rawValue as? Bool != nil{
                             let date = jsonLaunchData[i]["date_utc"].rawValue as? String ?? "нет информации"
-                            let success = jsonLaunchData[i]["success"].rawValue as! Bool
-                            var launchData = [String:Any]()
+                            let success = String(jsonLaunchData[i]["success"].rawValue as! Bool)
+                            var launchData = [String:String]()
                             launchData = ["success" : success, "date" : date]
                             launchDict[name] = launchData
                         }
