@@ -92,7 +92,9 @@ class BottomSheetController: UIViewController,Draggable{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        launchesController.modalPresentationStyle = .fullScreen
         launchesController.allRocketLaunches = rocket?.allLaunches
+        launchesController.name = rocket?.name
         if rocket != nil{
             construct()
             sheetCoordinator?.startTracking(item: self)

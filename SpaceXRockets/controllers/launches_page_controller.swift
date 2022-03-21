@@ -12,6 +12,7 @@ import CoreAudioTypes
 
 class LaunchesPageController : UIViewController{
     var allRocketLaunches : [String : [String:String]]?
+    var name : String?
     private let stack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -40,7 +41,8 @@ class LaunchesPageController : UIViewController{
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.9)
-            make.top.centerX.bottom.height.equalToSuperview()
+            make.centerX.bottom.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.8)
         }
     }
     let labelIfEmpty : UILabel = {
@@ -65,5 +67,60 @@ class LaunchesPageController : UIViewController{
         else{
         createStack()
         }
+        createCloseButtonAndLabel()
+    }
+    func createCloseButtonAndLabel(){
+        let button = UIButton()
+        let label : UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 25)
+            label.textAlignment = .left
+            label.adjustsFontSizeToFitWidth = true
+            label.textColor = .white
+            label.text = " Назад"
+            return label
+        }()
+        button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        button.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.right.top.bottom.width.height.equalTo(button)
+        }
+        let imgView : UIImageView = {
+            let imgView = UIImageView(image: UIImage(systemName: "chevron.left"))
+            imgView.tintColor = .white
+            imgView.contentMode = .scaleAspectFit
+            return imgView
+        }()
+        button.addSubview(imgView)
+        imgView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(button)
+            make.right.equalTo(button.snp.left)
+        }
+        view.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(view.frame.height*0.03)
+            make.left.equalToSuperview().offset(view.frame.width*0.05)
+            make.width.equalToSuperview().dividedBy(4)
+            make.height.equalToSuperview().multipliedBy(0.1)
+        }
+        let nameLabel : UILabel = {
+           let label = UILabel()
+            label.text = name
+            label.font = .systemFont(ofSize: 25)
+            label.adjustsFontSizeToFitWidth = true
+            label.textAlignment = .center
+            label.textColor = .white
+            return label
+        }()
+        view.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(button.snp.right)
+            make.top.equalTo(button)
+            make.height.equalTo(button)
+        }
+    }
+    @objc func onTap(){
+        self.dismiss(animated: true, completion: nil)
     }
 }
