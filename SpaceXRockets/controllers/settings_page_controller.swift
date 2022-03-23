@@ -11,7 +11,7 @@ import SnapKit
 
 class SettingPageController : UIViewController{
     private let label : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Настройки"
         label.font = .systemFont(ofSize: 25)
         label.textColor = .white
@@ -69,5 +69,46 @@ class SettingPageController : UIViewController{
     }
     @objc func onTap(){
         dismiss(animated: true, completion: nil)
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let orient = UIApplication.shared.statusBarOrientation
+        switch orient {
+        case .unknown:
+            stack.snp.remakeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.top.equalTo(label.snp.bottom).offset(view.frame.size.height*0.05)
+                make.height.equalToSuperview()
+            }
+        case .portrait:
+            stack.snp.remakeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.top.equalTo(label.snp.bottom).offset(view.frame.size.height*0.05)
+                make.height.equalToSuperview().multipliedBy(0.7)
+            }
+        case .portraitUpsideDown:
+            stack.snp.remakeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.top.equalTo(label.snp.bottom).offset(view.frame.size.height*0.05)
+                make.height.equalToSuperview().multipliedBy(0.7)
+            }
+        case .landscapeLeft:
+            stack.snp.remakeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.top.equalTo(label.snp.bottom).offset(view.frame.size.height*0.05)
+                make.height.equalToSuperview().multipliedBy(0.7)
+            }
+        case .landscapeRight:
+            stack.snp.remakeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.9)
+                make.top.equalTo(label.snp.bottom).offset(view.frame.size.height*0.05)
+                make.height.equalToSuperview().dividedBy(3)
+            }
+            super.viewWillTransition(to: size, with: coordinator)
+        }
     }
 }

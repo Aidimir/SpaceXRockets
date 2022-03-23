@@ -15,6 +15,7 @@ class RocketPageController: UIViewController{
     let imgView = UIImageView()
     let scrollView = UIScrollView()
     let bottomController = BottomSheetController()
+    private var alreadyHasSheet = false
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomController.rocket = rocket
@@ -35,52 +36,46 @@ class RocketPageController: UIViewController{
             make.left.right.bottom.top.width.equalToSuperview()
             make.height.equalToSuperview()
         }
-        var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
-        bottomController.sheetCoordinator = sheet
-        sheet.addSheet(bottomController, to: self)
+        if self.interfaceOrientation == .portrait{
+            var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
+            bottomController.sheetCoordinator = sheet
+            sheet.addSheet(bottomController, to: self)
+            alreadyHasSheet = true
+        }
+        else{
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+            }
+        }
     }
     @objc func onPullUp(sender : UIRefreshControl){
-        sender.endRefreshing()
         let newRandomImage = rocket?.images.randomElement()
         imgView.kf.setImage(with: URL(string: newRandomImage!))
+        sender.endRefreshing()
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let orient = UIApplication.shared.statusBarOrientation
-        switch orient {
-        case .unknown:
-            imgView.snp.remakeConstraints { make in
-                make.left.right.top.bottom.width.height.equalTo(scrollView)
-                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
-            }
-            
-        case .portrait:
-            print("portrait")
-            imgView.snp.remakeConstraints { make in
-                make.left.right.top.bottom.width.height.equalTo(scrollView)
-                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
-            }
-            
-        case .portraitUpsideDown:
-            imgView.snp.remakeConstraints { make in
-                make.left.right.top.bottom.width.height.equalTo(scrollView)
-                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
-
-            }
-            
-        case .landscapeLeft:
-            print("landscape left")
-            imgView.snp.remakeConstraints { make in
-                make.left.right.top.bottom.width.height.equalTo(scrollView)
-                NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
-          }
-            
-        case .landscapeRight:
-            print("landscape right")
+        if UIDevice.current.orientation.isPortrait{
+            print("isPortrait")
             imgView.snp.remakeConstraints { make in
                 make.left.right.top.bottom.width.equalTo(scrollView)
                 make.height.equalTo(scrollView).multipliedBy(0.5)
             }
+            if alreadyHasSheet == false{
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.25) { [self] in
+                    var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
+                    bottomController.sheetCoordinator = sheet
+                    sheet.addSheet(bottomController, to: self)
+                    alreadyHasSheet = true
+                    NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+                }
+            }
         }
-        super.viewWillTransition(to: size, with: coordinator)
+        else{
+            print("NotPortrait")
+            imgView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.width.height.equalTo(scrollView)
+            }
+            NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
+        }
     }
 }

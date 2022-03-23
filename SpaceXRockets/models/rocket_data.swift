@@ -15,9 +15,9 @@ struct RocketData{
     var allLaunches : [String : [String:String]]
     var firstStage : [String : String] //first_stage
     var secondStage : [String : String] //second_stage
-    var height : Dictionary<String,Double> //height
-    var diameter : Dictionary<String,Double> //diameter
-    var mass : Dictionary<String,Double> //mass
-    var pressure : Dictionary<String,Double>  //lb
+    var height : Dictionary<String,String> //height
+    var diameter : Dictionary<String,String> //diameter
+    var mass : Dictionary<String,String> //mass
+    var pressure : Dictionary<String,String>  //lb
     var images : Array<String>
 }

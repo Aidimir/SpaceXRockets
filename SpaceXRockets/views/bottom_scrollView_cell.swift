@@ -11,7 +11,7 @@ import SnapKit
 
 class BottomScrollViewCell : UIView{
     var parameterName : String
-    var value : Dictionary<String,Double>
+    var value : Dictionary<String,String>
     private var valueLabel : UILabel = {
         var valueLabel = UILabel()
         valueLabel.font = .boldSystemFont(ofSize: 22)
@@ -53,11 +53,11 @@ class BottomScrollViewCell : UIView{
             make.width.equalTo(self).dividedBy(1.1)
         }
     }
-    init(value : [String:Double], parameterName : String){
+    init(value : [String:String], parameterName : String){
         self.value = value
         self.parameterName = parameterName
         super.init(frame: .zero)
-        valueLabel.text = removeUselessZero(num: value[defaultUnits[parameterName]!]!)
+        valueLabel.text = value[defaultUnits[parameterName]!]
         unitsLabel.text = parameterName + ", " + defaultUnits[parameterName]!
         NotificationCenter.default.addObserver(self, selector: #selector(updateLabels), name: NSNotification.Name("updateCellLabels"), object: nil)
         createCell()
@@ -67,7 +67,7 @@ class BottomScrollViewCell : UIView{
         fatalError("init(coder:) has not been implemented")
     }
     @objc func updateLabels(notification : NSNotification){
-        valueLabel.text = removeUselessZero(num: value[defaultUnits[parameterName]!]!)
+        valueLabel.text = value[defaultUnits[parameterName]!]
         unitsLabel.text = parameterName + ", " + defaultUnits[parameterName]!
     }
 }

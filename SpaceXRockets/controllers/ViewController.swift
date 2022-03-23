@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import UBottomSheet
 import Kingfisher
+import SwiftUI
 class ViewController: UIViewController, UserPresenterDelegate {
     private let scrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -16,11 +17,12 @@ class ViewController: UIViewController, UserPresenterDelegate {
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
+    private var pages = [RocketPageController]()
     private let pageControl : UIPageControl = {
-       let pgControl = UIPageControl()
+        let pgControl = UIPageControl()
         return pgControl
     }()
-    let spinner = UIActivityIndicatorView()
+    private let spinner = UIActivityIndicatorView()
     private let massiveView = UIView()
     private let stackView : UIStackView = {
         let stack = UIStackView()
@@ -29,10 +31,25 @@ class ViewController: UIViewController, UserPresenterDelegate {
         return stack
     }()
     func errorHandler() {
+        let scroll = UIScrollView()
+        let refreshControl : UIRefreshControl = {
+            let refresh = UIRefreshControl()
+            refresh.addTarget(self, action: #selector(tryToConnectAgain(sender: )), for: .valueChanged)
+            refresh.tintColor = .white
+            return refresh
+        }()
+        scroll.refreshControl = refreshControl
         let errorImgView = UIImageView(image: UIImage(named: "errorImage"))
         spinner.removeFromSuperview()
-        errorImgView.frame = view.frame
-        view.addSubview(errorImgView)
+        scroll.addSubview(errorImgView)
+        errorImgView.snp.makeConstraints { make in
+            make.left.right.centerY.width.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(2)
+        }
+        view.addSubview(scroll)
+        scroll.snp.makeConstraints { make in
+            make.left.right.top.bottom.width.height.equalToSuperview()
+        }
     }
     func presentRockets(rocketsDict: [String : RocketData]) {
         if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
@@ -41,7 +58,6 @@ class ViewController: UIViewController, UserPresenterDelegate {
         spinner.removeFromSuperview()
         scrollView.delegate = self
         pageControl.numberOfPages = rocketsDict.count
-        var pages = [RocketPageController]()
         for i in rocketsDict.sorted{$0.0 < $1.0}{
             let rocketPage : RocketPageController = {
                 let rocket = RocketPageController()
@@ -68,7 +84,7 @@ class ViewController: UIViewController, UserPresenterDelegate {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.top.left.right.width.height.equalToSuperview()
-//            make.height.equalToSuperview().multipliedBy(0.95)
+            //            make.height.equalToSuperview().multipliedBy(0.95)
         }
         view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
@@ -86,6 +102,17 @@ class ViewController: UIViewController, UserPresenterDelegate {
             make.center.width.height.equalToSuperview()
         }
         presenter.fetchData()
+    }
+    @objc func tryToConnectAgain(sender : UIRefreshControl){
+        sender.endRefreshing()
+        view.subviews.forEach({ $0.removeFromSuperview() })
+        presenter.fetchData()
+    }
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(pageControl.currentPage)
+        print(scrollView.frame.maxX)
+        print(view.frame.maxX)
+        scrollView.setContentOffset(CGPoint(x: Int(Int(scrollView.frame.maxX)/pages.count * pageControl.currentPage), y: 0), animated: false)
     }
 }
 
