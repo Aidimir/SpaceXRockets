@@ -31,31 +31,34 @@ class ViewController: UIViewController, UserPresenterDelegate {
         return stack
     }()
     func errorHandler() {
-        let scroll = UIScrollView()
-        let refreshControl : UIRefreshControl = {
-            let refresh = UIRefreshControl()
-            refresh.addTarget(self, action: #selector(tryToConnectAgain(sender: )), for: .valueChanged)
-            refresh.tintColor = .white
-            return refresh
-        }()
-        scroll.refreshControl = refreshControl
-        let errorImgView = UIImageView(image: UIImage(named: "errorImage"))
         spinner.removeFromSuperview()
-        scroll.addSubview(errorImgView)
-        errorImgView.snp.makeConstraints { make in
-            make.left.right.centerY.width.equalToSuperview()
-            make.height.equalToSuperview().dividedBy(2)
+        if view.subviews.count == 0 {
+            let scroll = UIScrollView()
+            let refreshControl : UIRefreshControl = {
+                let refresh = UIRefreshControl()
+                refresh.addTarget(self, action: #selector(tryToConnectAgain(sender: )), for: .valueChanged)
+                refresh.tintColor = .white
+                return refresh
+            }()
+            scroll.refreshControl = refreshControl
+            let errorImgView = UIImageView(image: UIImage(named: "errorImage"))
+            scroll.addSubview(errorImgView)
+            errorImgView.snp.makeConstraints { make in
+                make.left.right.centerY.width.equalToSuperview()
+                make.height.equalToSuperview().dividedBy(2)
+            }
+            view.addSubview(scroll)
+            scroll.snp.makeConstraints { make in
+                make.left.right.top.bottom.width.height.equalToSuperview()
+            }
         }
-        view.addSubview(scroll)
-        scroll.snp.makeConstraints { make in
-            make.left.right.top.bottom.width.height.equalToSuperview()
-        }
+        else{}
     }
     func presentRockets(rocketsDict: [String : RocketData]) {
+        view.subviews.forEach({ $0.removeFromSuperview() })
         if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
             defaultUnits = UserDefaults.standard.dictionary(forKey: "values") as! [String: String]
         }
-        spinner.removeFromSuperview()
         scrollView.delegate = self
         pageControl.numberOfPages = rocketsDict.count
         for i in rocketsDict.sorted{$0.0 < $1.0}{
@@ -105,7 +108,6 @@ class ViewController: UIViewController, UserPresenterDelegate {
     }
     @objc func tryToConnectAgain(sender : UIRefreshControl){
         sender.endRefreshing()
-        view.subviews.forEach({ $0.removeFromSuperview() })
         presenter.fetchData()
     }
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {

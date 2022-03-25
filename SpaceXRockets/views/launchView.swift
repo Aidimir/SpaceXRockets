@@ -21,6 +21,19 @@ class LaunchView : UIView{
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+    let successImg : UIImageView = {
+        let img = UIImage(named: "success")
+        let imgView = UIImageView(image: img)
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }()
+    let failureImg : UIImageView = {
+        let img = UIImage(named: "failure")
+        let imgView = UIImageView(image: img)
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }()
+
     let dateLabel : UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 25)
@@ -42,14 +55,13 @@ class LaunchView : UIView{
         fatalError("init(coder:) has not been implemented")
     }
     func setup(){
-        let label : UILabel = {
-           let label = UILabel()
-            label.text = launchInfo["success"]
-            label.textColor = .white
-            label.textAlignment = .left
-            label.font = .boldSystemFont(ofSize: 30)
-            return label
-        }()
+        var imgView = UIImageView()
+        if launchInfo["success"] == "true"{
+            imgView = successImg
+        }
+        else{
+            imgView = failureImg
+        }
         view.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
             make.width.equalTo(view).multipliedBy(0.9*0.75)
@@ -61,8 +73,8 @@ class LaunchView : UIView{
             make.top.equalTo(nameLabel.snp.bottom)
             make.left.height.width.equalTo(nameLabel)
         }
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
+        view.addSubview(imgView)
+        imgView.snp.makeConstraints { make in
             make.top.right.bottom.equalTo(view)
             make.height.equalTo(view)
             make.width.equalTo(view).dividedBy(4)
