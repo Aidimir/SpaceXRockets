@@ -40,7 +40,8 @@ class Presenter {
         for i in 0..<jsonData.count{
             let name = jsonData[i]["name"].rawValue as? String ?? "нет информации"
             let firstLaunch = jsonData[i]["first_flight"].rawValue as? String ?? "нет информации"
-            let country = jsonData[i]["country"].rawValue as? String ?? "нет информации"
+            var country = jsonData[i]["country"].rawValue as? String ?? "нет информации"
+            country = countries[country] ?? country
             var launchCost = String(jsonData[i]["cost_per_launch"].rawValue as? Double ?? -1)
             if launchCost == "-1.0"{
                 launchCost = "нет информации"
@@ -100,7 +101,8 @@ class Presenter {
             if rocketId == launches[i]["rocket"].rawValue as! String{
                 let name = launches[i]["name"].rawValue as? String ?? "Нет имени"
                 if launches[i]["success"].rawValue as? Bool != nil{
-                    let date = launches[i]["date_utc"].rawValue as? String ?? "нет информации"
+                    var date = launches[i]["date_utc"].rawValue as? String ?? "нет информации"
+                    date = getNormalDateFormat(date: date)
                     let success = String(launches[i]["success"].rawValue as! Bool)
                     var launchData = [String:String]()
                     launchData = ["success" : success, "date" : date]

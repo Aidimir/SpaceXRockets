@@ -111,10 +111,12 @@ class ViewController: UIViewController, UserPresenterDelegate {
         presenter.fetchData()
     }
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if view.subviews.count > 1 {
         print(pageControl.currentPage)
         print(scrollView.frame.maxX)
         print(view.frame.maxX)
         scrollView.setContentOffset(CGPoint(x: Int(Int(scrollView.frame.maxX)/pages.count * pageControl.currentPage), y: 0), animated: false)
+        }
     }
 }
 
