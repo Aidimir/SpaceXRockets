@@ -10,26 +10,79 @@ import SnapKit
 import UBottomSheet
 import Kingfisher
 import SwiftUI
-class ViewController: UIViewController, UserPresenterDelegate {
-    private let scrollView : UIScrollView = {
+import BLTNBoard
+class ViewController: UIViewController {
+    private var scrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
-    private var pages = [RocketPageController]()
+    private var boardManager : BLTNItemManager?
+    private var pagesCount = 0
     private let pageControl : UIPageControl = {
         let pgControl = UIPageControl()
         return pgControl
     }()
+    let presenter = Presenter()
     private let spinner = UIActivityIndicatorView()
-    private let massiveView = UIView()
-    private let stackView : UIStackView = {
-        let stack = UIStackView()
-        stack.distribution = .fillEqually
-        stack.axis = .horizontal
-        return stack
-    }()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+        presenter.setDelegate(delegate: self)
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        spinner.snp.makeConstraints { make in
+            make.center.width.height.equalToSuperview()
+        }
+        presenter.fetchData()
+        NotificationCenter.default.addObserver(self, selector: #selector(showCard), name: NSNotification.Name("showCard"), object: nil)
+    }
+    @objc func tryToConnectAgain(sender : UIRefreshControl){
+        sender.endRefreshing()
+        presenter.fetchData()
+    }
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if view.subviews.count > 1 {
+        print(pageControl.currentPage)
+        print(scrollView.frame.maxX)
+        print(view.frame.maxX)
+        scrollView.setContentOffset(CGPoint(x: Int(Int(scrollView.frame.maxX)/pagesCount * pageControl.currentPage), y: 0), animated: false)
+        }
+    }
+}
+
+extension ViewController : UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width)))
+    }
+}
+
+extension ViewController{
+    @objc func showCard(notification : NSNotification){
+        boardManager = {
+           let item = BLTNPageItem(title: "Что то пошло не так...")
+            item.image = UIImage(named: "errorImage")
+            item.descriptionText = notification.object as? String ?? ""
+            item.actionButtonTitle = "Попробовать подключиться снова"
+            item.actionHandler = { [weak self] _ in
+                self?.onCardTap()
+            }
+            return BLTNItemManager(rootItem: item)
+        }()
+        boardManager!.backgroundColor = UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.boardManager!.showBulletin(above: self)
+        }
+    }
+    func onCardTap(){
+        boardManager!.dismissBulletin()
+        presenter.fetchData()
+    }
+}
+
+
+extension ViewController : UserPresenterDelegate{
     func errorHandler() {
         spinner.removeFromSuperview()
         if view.subviews.count == 0 {
@@ -56,6 +109,20 @@ class ViewController: UIViewController, UserPresenterDelegate {
     }
     func presentRockets(rocketsDict: [String : RocketData]) {
         view.subviews.forEach({ $0.removeFromSuperview() })
+        scrollView = {
+            let scrollView = UIScrollView()
+            scrollView.isPagingEnabled = true
+            scrollView.showsHorizontalScrollIndicator = false
+            return scrollView
+        }()
+        let massiveView = UIView()
+        let stackView : UIStackView = {
+            let stack = UIStackView()
+            stack.distribution = .fillEqually
+            stack.axis = .horizontal
+            return stack
+        }()
+        var pages = [RocketPageController]()
         if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
             defaultUnits = UserDefaults.standard.dictionary(forKey: "values") as! [String: String]
         }
@@ -71,6 +138,7 @@ class ViewController: UIViewController, UserPresenterDelegate {
                 return rocket
             }()
             pages.append(rocketPage)
+            pagesCount += 1
         }
         for i in pages{
             stackView.addArrangedSubview(i.view)
@@ -93,35 +161,5 @@ class ViewController: UIViewController, UserPresenterDelegate {
         pageControl.snp.makeConstraints { make in
             make.bottom.centerX.width.equalToSuperview()
         }
-    }
-    let presenter = Presenter()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .black
-        presenter.setDelegate(delegate: self)
-        spinner.startAnimating()
-        view.addSubview(spinner)
-        spinner.snp.makeConstraints { make in
-            make.center.width.height.equalToSuperview()
-        }
-        presenter.fetchData()
-    }
-    @objc func tryToConnectAgain(sender : UIRefreshControl){
-        sender.endRefreshing()
-        presenter.fetchData()
-    }
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if view.subviews.count > 1 {
-        print(pageControl.currentPage)
-        print(scrollView.frame.maxX)
-        print(view.frame.maxX)
-        scrollView.setContentOffset(CGPoint(x: Int(Int(scrollView.frame.maxX)/pages.count * pageControl.currentPage), y: 0), animated: false)
-        }
-    }
-}
-
-extension ViewController : UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width)))
     }
 }

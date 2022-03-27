@@ -9,7 +9,7 @@ target 'SpaceXRockets' do
  pod 'SwiftyJSON' 
 pod 'UBottomSheet'
 pod 'Kingfisher'
-
+pod 'BulletinBoard'
 
 
   # Pods for SpaceXRockets

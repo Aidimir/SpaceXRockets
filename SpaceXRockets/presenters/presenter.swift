@@ -29,11 +29,13 @@ class Presenter {
                     let dictFromArray = self?.getDictFromArray(array: rockets)
                     print("This data fetched from cache, not internet")
                     self?.delegate?.presentRockets(rocketsDict: dictFromArray!)
+                    NotificationCenter.default.post(name: NSNotification.Name("showCard"), object: String("Нет подключения к интернету, вам показана ( возможно ) устаревшая информация. Попробуйте перезагрузить приложение"))
                 }
                 else{
-                self?.delegate?.errorHandler()
+                    self?.delegate?.errorHandler()
+                    NotificationCenter.default.post(name: NSNotification.Name("showCard"), object: String("Нет подключения к интернету, пожалуйста, повторите попытку"))
                 }
-                }
+            }
         }
     }
     func setDelegate(delegate : PresenterDelegate){
