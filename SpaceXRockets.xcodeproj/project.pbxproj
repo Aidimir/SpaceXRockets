@@ -15,6 +15,8 @@
 		9D63613427E77ABF002EDA8F /* cellUnitsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613327E77ABF002EDA8F /* cellUnitsToggle.swift */; };
 		9D63613627E899E8002EDA8F /* launches_page_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613527E899E8002EDA8F /* launches_page_controller.swift */; };
 		9D63613827E89E16002EDA8F /* launchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613727E89E16002EDA8F /* launchView.swift */; };
+		9DAC807227F046B20008B7C9 /* data_model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC807027F046B20008B7C9 /* data_model.xcdatamodeld */; };
+		9DAC807627F073390008B7C9 /* data_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC807527F073390008B7C9 /* data_manager.swift */; };
 		9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFB927E30830007EC913 /* AppDelegate.swift */; };
 		9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */; };
 		9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBD27E30830007EC913 /* ViewController.swift */; };
@@ -63,6 +65,8 @@
 		9D63613327E77ABF002EDA8F /* cellUnitsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cellUnitsToggle.swift; sourceTree = "<group>"; };
 		9D63613527E899E8002EDA8F /* launches_page_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launches_page_controller.swift; sourceTree = "<group>"; };
 		9D63613727E89E16002EDA8F /* launchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchView.swift; sourceTree = "<group>"; };
+		9DAC807127F046B20008B7C9 /* data_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = data_model.xcdatamodel; sourceTree = "<group>"; };
+		9DAC807527F073390008B7C9 /* data_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_manager.swift; sourceTree = "<group>"; };
 		9DF6EFB627E30830007EC913 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFB927E30830007EC913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				9DF6EFC227E30832007EC913 /* Assets.xcassets */,
 				9DF6EFC427E30832007EC913 /* LaunchScreen.storyboard */,
 				9DF6EFC727E30832007EC913 /* Info.plist */,
+				9DAC807027F046B20008B7C9 /* data_model.xcdatamodeld */,
+				9DAC807527F073390008B7C9 /* data_manager.swift */,
 			);
 			path = SpaceXRockets;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D63612E27E5BB57002EDA8F /* rocket_page_controller.swift in Sources */,
+				9DAC807227F046B20008B7C9 /* data_model.xcdatamodeld in Sources */,
 				9D63613827E89E16002EDA8F /* launchView.swift in Sources */,
 				9D63612C27E49818002EDA8F /* useful_methods.swift in Sources */,
 				9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */,
@@ -493,6 +500,7 @@
 				9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */,
 				9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */,
 				9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */,
+				9DAC807627F073390008B7C9 /* data_manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,6 +850,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9DAC807027F046B20008B7C9 /* data_model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DAC807127F046B20008B7C9 /* data_model.xcdatamodel */,
+			);
+			currentVersion = 9DAC807127F046B20008B7C9 /* data_model.xcdatamodel */;
+			path = data_model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9DF6EFAE27E30830007EC913 /* Project object */;
 }

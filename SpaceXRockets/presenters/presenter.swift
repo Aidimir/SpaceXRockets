@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import CoreData
 protocol UserPresenterDelegate {
     func presentRockets(rocketsDict : [String : RocketData])
     func errorHandler()
@@ -16,18 +17,23 @@ typealias PresenterDelegate = UserPresenterDelegate & UIViewController
 class Presenter {
     weak var delegate : PresenterDelegate?
     func fetchData(){
-        if rocketsDictionary.isEmpty{
-            NetworkService().getData { [weak self] dict in
-                if dict != nil{
-                    self?.presentData(data : dict!)
+        NetworkService().getData { [weak self] dict in
+            if dict != nil{
+                self?.presentData(data : dict!)
+            }
+            else{
+                let cache = DataManager().retrieveRockets()
+                if cache?[0].rockets != nil{
+                    var rockets = [RocketData]()
+                    rockets = cache![0].rockets!
+                    let dictFromArray = self?.getDictFromArray(array: rockets)
+                    print("This data fetched from cache, not internet")
+                    self?.delegate?.presentRockets(rocketsDict: dictFromArray!)
                 }
                 else{
-                    self?.delegate?.errorHandler()
+                self?.delegate?.errorHandler()
                 }
-            }
-        }
-        else{
-            delegate?.presentRockets(rocketsDict: rocketsDictionary)
+                }
         }
     }
     func setDelegate(delegate : PresenterDelegate){
@@ -81,6 +87,10 @@ class Presenter {
             var launchDict = fetchLaunchesInfo(launches: jsonLaunchData, rocketId: id)
             dict[id] = RocketData(name: name, firstLaunch: firstLaunch, country: country, launchCost: launchCost, allLaunches: launchDict , firstStage: firstStage, secondStage: secondStage, height: height, diameter: width, mass: mass, pressure: pressure, images: images)
         }
+        DataManager().resetCoreData()
+        DataManager().saveRocketsToCoreData(rockets: getArrayFromDict(dict: dict))
+        let k = DataManager().retrieveRockets()
+        print(k?[0].rockets)
         self.delegate?.presentRockets(rocketsDict: dict)
     }
     func ifDictionaryNoData(dict : Dictionary<String,String>) -> Dictionary<String,String>{
@@ -111,5 +121,20 @@ class Presenter {
             }
         }
         return launchDict
+    }
+    func getArrayFromDict(dict : [String:RocketData]) -> Array<RocketData>{
+        var res = [RocketData]()
+        for (_,value) in dict{
+            res.append(value)
+        }
+        res = res.sorted(){$0.name < $1.name}
+        return res
+    }
+    func getDictFromArray(array : Array<RocketData>) -> Dictionary<String,RocketData>{
+        var res = [String:RocketData]()
+        for i in array{
+            res[i.name] = i
+        }
+        return res
     }
 }
