@@ -1,0 +1,6 @@
+framework module Pods_SpaceXRockets_SpaceXRocketsUITests {
+  umbrella header "Pods-SpaceXRockets-SpaceXRocketsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

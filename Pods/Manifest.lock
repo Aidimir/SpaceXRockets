@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (5.5.0)
+  - BulletinBoard (5.0.0)
+  - Kingfisher (7.2.0)
+  - SnapKit (5.0.1)
+  - SwiftyJSON (5.0.1)
+  - UBottomSheet (1.0.9)
+
+DEPENDENCIES:
+  - Alamofire
+  - BulletinBoard
+  - Kingfisher
+  - SnapKit
+  - SwiftyJSON
+  - UBottomSheet
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - BulletinBoard
+    - Kingfisher
+    - SnapKit
+    - SwiftyJSON
+    - UBottomSheet
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
+  Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  UBottomSheet: a1c528d907b60e7ec65e1f0987fe6074b2ad3762
+
+PODFILE CHECKSUM: 7dcc182cd23568006ea987ba3718692c622afffa
+
+COCOAPODS: 1.11.2
