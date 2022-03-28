@@ -61,11 +61,11 @@ class RocketPageController: UIViewController{
                 make.height.equalTo(scrollView).multipliedBy(0.5)
             }
             if alreadyHasSheet == false{
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.25) { [self] in
-                    var sheet = UBottomSheetCoordinator(parent: self, delegate: nil)
-                    bottomController.sheetCoordinator = sheet
-                    sheet.addSheet(bottomController, to: self)
-                    alreadyHasSheet = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.25) { [weak self] in
+                    var sheet = UBottomSheetCoordinator(parent: self!, delegate: nil)
+                    self?.bottomController.sheetCoordinator = sheet
+                    sheet.addSheet(self!.bottomController, to: self!)
+                    self?.alreadyHasSheet = true
                     NotificationCenter.default.post(name: NSNotification.Name("closeSheet"), object: nil)
                 }
             }
