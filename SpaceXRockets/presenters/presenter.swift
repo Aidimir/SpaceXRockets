@@ -23,7 +23,8 @@ class Presenter {
             }
             else{
                 let cache = DataManager().retrieveRockets()
-                if cache?[0].rockets != nil{
+                
+                if cache != nil && cache?.isEmpty == false{
                     var rockets = [RocketData]()
                     rockets = cache![0].rockets!
                     let dictFromArray = self?.getDictFromArray(array: rockets)
