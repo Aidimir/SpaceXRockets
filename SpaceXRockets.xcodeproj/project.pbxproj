@@ -67,6 +67,12 @@
 		9D63613727E89E16002EDA8F /* launchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchView.swift; sourceTree = "<group>"; };
 		9DAC807127F046B20008B7C9 /* data_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = data_model.xcdatamodel; sourceTree = "<group>"; };
 		9DAC807527F073390008B7C9 /* data_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_manager.swift; sourceTree = "<group>"; };
+		9DE1924E2803561200506A09 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		9DE1924F2803561200506A09 /* gf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gf.gif; sourceTree = "<group>"; };
+		9DE192502803561200506A09 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		9DE192512803561200506A09 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		9DE192522803561200506A09 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		9DE192532803561200506A09 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		9DF6EFB627E30830007EC913 /* SpaceXRockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXRockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6EFB927E30830007EC913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,9 +150,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9DE1924D2803561200506A09 /* rocketProjectImages */ = {
+			isa = PBXGroup;
+			children = (
+				9DE1924E2803561200506A09 /* 4.png */,
+				9DE1924F2803561200506A09 /* gf.gif */,
+				9DE192502803561200506A09 /* 2.png */,
+				9DE192512803561200506A09 /* 3.png */,
+				9DE192522803561200506A09 /* 1.png */,
+				9DE192532803561200506A09 /* 0.png */,
+			);
+			path = rocketProjectImages;
+			sourceTree = "<group>";
+		};
 		9DF6EFAD27E30830007EC913 = {
 			isa = PBXGroup;
 			children = (
+				9DE1924D2803561200506A09 /* rocketProjectImages */,
 				9DF6EFB827E30830007EC913 /* SpaceXRockets */,
 				9DF6EFCF27E30832007EC913 /* SpaceXRocketsTests */,
 				9DF6EFD927E30832007EC913 /* SpaceXRocketsUITests */,
