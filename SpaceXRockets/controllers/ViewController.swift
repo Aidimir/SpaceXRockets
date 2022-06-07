@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         let pgControl = UIPageControl()
         return pgControl
     }()
-    let presenter = Presenter()
+    private let presenter = Presenter()
     private let spinner = UIActivityIndicatorView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         presenter.fetchData()
         NotificationCenter.default.addObserver(self, selector: #selector(showCard), name: NSNotification.Name("showCard"), object: nil)
     }
-    @objc func tryToConnectAgain(sender : UIRefreshControl){
+    @objc private func tryToConnectAgain(sender : UIRefreshControl){
         sender.endRefreshing()
         presenter.fetchData()
     }
@@ -59,7 +59,7 @@ extension ViewController : UIScrollViewDelegate{
 }
 
 extension ViewController{
-    @objc func showCard(notification : NSNotification){
+    @objc private func showCard(notification : NSNotification){
         boardManager = {
            let item = BLTNPageItem(title: "Что то пошло не так...")
             item.image = UIImage(named: "errorImage")
@@ -75,7 +75,7 @@ extension ViewController{
             self.boardManager!.showBulletin(above: self)
         }
     }
-    func onCardTap(){
+    private func onCardTap(){
         boardManager!.dismissBulletin()
         presenter.fetchData()
     }
@@ -105,9 +105,8 @@ extension ViewController : UserPresenterDelegate{
                 make.left.right.top.bottom.width.height.equalToSuperview()
             }
         }
-        else{}
     }
-    func presentRockets(rocketsDict: [String : RocketData]) {
+    func presentRockets(rocketsArray: [RocketData]) {
         view.subviews.forEach({ $0.removeFromSuperview() })
         scrollView = {
             let scrollView = UIScrollView()
@@ -123,15 +122,15 @@ extension ViewController : UserPresenterDelegate{
             return stack
         }()
         var pages = [RocketPageController]()
-        if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
-            defaultUnits = UserDefaults.standard.dictionary(forKey: "values") as! [String: String]
-        }
+//        if UserDefaults.standard.dictionary(forKey: "values")?.isEmpty == false{
+//            defaultUnits = UserDefaults.standard.dictionary(forKey: "values") as! [String: String]
+//        }
         scrollView.delegate = self
-        pageControl.numberOfPages = rocketsDict.count
-        for i in rocketsDict.sorted{$0.0 < $1.0}{
+        pageControl.numberOfPages = rocketsArray.count
+        for rocketData in rocketsArray.sorted{$0.name<$1.name}{
             let rocketPage : RocketPageController = {
                 let rocket = RocketPageController()
-                rocket.rocket = rocketsDict[i.key]
+                rocket.rocket = rocketData
                 rocket.view.frame = view.frame
                 addChild(rocket)
                 rocket.didMove(toParent: self)

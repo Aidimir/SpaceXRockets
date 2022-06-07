@@ -10,41 +10,43 @@ import UIKit
 import SnapKit
 
 class SettingsButton : UIView{
-    var parameterName : String
-    var value1 : String
-    var value2 : String
-    let header : UILabel = {
-       let label = UILabel()
+    private var parameter : ParameterUnits
+    private let header : UILabel = {
+        let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textColor = .white
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    let label1 : UILabel = {
-       let label = UILabel()
+    private let label1 : UILabel = {
+        let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    let label2 : UILabel = {
-       let label = UILabel()
+    private let label2 : UILabel = {
+        let label = UILabel()
         label.font = .systemFont(ofSize: 20)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    let valuesStack : UIStackView = {
-       let stack = UIStackView()
+    private let valuesStack : UIStackView = {
+        let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillEqually
         return stack
     }()
-    func createButton(){
-        header.text = parameterName
-        label1.text = value1
-        label2.text = value2
+    private func createButton(){
+        var value1 = parameter.primaryUnit
+        var value2 = parameter.secondaryUnit
+        var valueArray : [String] = [value1,value2]
+        valueArray = valueArray.sorted{$0>$1}
+        header.text = parameter.parameterName
+        label1.text = valueArray[0]
+        label2.text = valueArray[1]
         valuesStack.addArrangedSubview(label1)
         label1.layer.cornerRadius = 10
         label1.layer.masksToBounds = true
@@ -56,7 +58,7 @@ class SettingsButton : UIView{
             button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
             return button
         }()
-        if defaultUnits[parameterName] == value1{
+        if parameter.primaryUnit == valueArray[0]{
             label1.backgroundColor = .white
             label2.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1)
         }
@@ -80,26 +82,21 @@ class SettingsButton : UIView{
             make.width.equalToSuperview().dividedBy(2)
         }
     }
-    func createButtonAndHeader(){
-    }
     @objc func onTap(){
         if label2.backgroundColor == UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1) {
             label2.backgroundColor = .white
             label1.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1)
-            defaultUnits[parameterName] = value2
         }
         else{
             label1.backgroundColor = .white
             label2.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1)
-            defaultUnits[parameterName] = value1
         }
+        parameter.ChangeUnits()
         NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
-        UserDefaults.standard.setValue(defaultUnits, forKey: "values")
+        //        UserDefaults.standard.setValue(defaultUnits, forKey: "values")
     }
-    init(parameterName : String,value1 : String, value2 : String){
-        self.parameterName = parameterName
-        self.value1 = value1
-        self.value2 = value2
+    init(parameter : ParameterUnits){
+        self.parameter = parameter
         super.init(frame: .zero)
         createButton()
     }

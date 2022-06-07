@@ -18,19 +18,20 @@ class SettingPageController : UIViewController{
         label.textAlignment = .right
         return label
     }()
-    let stack : UIStackView = {
+    private let stack : UIStackView = {
         let stack = UIStackView()
         stack.distribution = .fillEqually
         stack.axis = .vertical
         return stack
     }()
-    let closeButton : UIButton = {
+    private let closeButton : UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(onTap), for: .touchUpInside)
         let label = UILabel()
         label.text = "Закрыть"
         label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         label.font = .boldSystemFont(ofSize: 25)
         button.addSubview(label)
         label.snp.makeConstraints { make in
@@ -42,8 +43,9 @@ class SettingPageController : UIViewController{
         super.viewDidLoad()
         stack.spacing = view.frame.size.height*0.04
         view.backgroundColor = UIColor(red: 0.18, green: 0.18, blue: 0.18, alpha: 1)
-        for i in allUnits.sorted{$0.0 < $1.0}{
-            stack.addArrangedSubview( SettingsButton(parameterName: i.key, value1: allUnits[i.key]![0], value2: allUnits[i.key]![1]))
+        let allParams = [Settings.shared.heightParameter, Settings.shared.payloadWeightsParameter,Settings.shared.massParameter, Settings.shared.diameterParameter]
+        for param in allParams.sorted{$0.parameterName<$1.parameterName} {
+            stack.addArrangedSubview( SettingsButton(parameter: param))
         }
         view.addSubview(label)
         label.snp.makeConstraints { make in
@@ -67,7 +69,7 @@ class SettingPageController : UIViewController{
             make.height.equalTo(label)
         }
     }
-    @objc func onTap(){
+    @objc private func onTap(){
         dismiss(animated: true, completion: nil)
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

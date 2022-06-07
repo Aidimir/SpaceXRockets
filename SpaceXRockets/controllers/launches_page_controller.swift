@@ -11,8 +11,8 @@ import SnapKit
 import CoreAudioTypes
 
 class LaunchesPageController : UIViewController{
-    var allRocketLaunches : [String : [String:String]]?
-    var name : String?
+    public var allRocketLaunches : [RocketLaunchInfo]?
+    public var name : String?
     private let stack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -25,9 +25,9 @@ class LaunchesPageController : UIViewController{
         scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
-    func createStack(){
-        for (key,value) in allRocketLaunches!{
-            stack.addArrangedSubview(LaunchView(launchInfo: value, name: key))
+    private func createStack(){
+        for launch in allRocketLaunches!{
+            stack.addArrangedSubview(LaunchView(launchInfo: launch))
         }
         massiveView.addSubview(stack)
         stack.snp.makeConstraints { make in
@@ -45,7 +45,7 @@ class LaunchesPageController : UIViewController{
             make.height.equalToSuperview().multipliedBy(0.8)
         }
     }
-    let labelIfEmpty : UILabel = {
+    private let labelIfEmpty : UILabel = {
        let label = UILabel()
         label.text = "Информации о запусках нет"
         label.textAlignment = .center
@@ -69,7 +69,7 @@ class LaunchesPageController : UIViewController{
         }
         createCloseButtonAndLabel()
     }
-    func createCloseButtonAndLabel(){
+    private func createCloseButtonAndLabel(){
         let button = UIButton()
         let label : UILabel = {
             let label = UILabel()
@@ -120,7 +120,7 @@ class LaunchesPageController : UIViewController{
             make.height.equalTo(button)
         }
     }
-    @objc func onTap(){
+    @objc private func onTap(){
         self.dismiss(animated: true, completion: nil)
     }
 }

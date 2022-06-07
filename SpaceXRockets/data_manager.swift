@@ -15,7 +15,7 @@ class DataManager : NSObject{
         let context = appDelegate.persistentContainer.viewContext
         guard let entity = NSEntityDescription.entity(forEntityName: "RocketsData", in: context) else {return}
         let object = RocketsData(entity: entity, insertInto: context)
-        object.rockets = rockets
+       // object.rockets = rockets
         do{
             print("Did save to core data")
             try context.save()

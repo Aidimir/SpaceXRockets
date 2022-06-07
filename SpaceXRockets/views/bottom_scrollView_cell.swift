@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class BottomScrollViewCell : UIView{
-    var parameterName : String
-    var value : Dictionary<String,String>
+    private let parameter : ParameterUnits
+    private let value : Dictionary<String,Double>
     private var valueLabel : UILabel = {
         var valueLabel = UILabel()
         valueLabel.font = .boldSystemFont(ofSize: 22)
@@ -29,8 +29,8 @@ class BottomScrollViewCell : UIView{
         unitsLabel.textAlignment = .center
         return unitsLabel
     }()
-    let view = UIView()
-    func createCell(){
+    private let view = UIView()
+    private func createCell(){
         view.addSubview(valueLabel)
         valueLabel.snp.makeConstraints { make in
             make.top.equalTo(view).offset(10)
@@ -53,12 +53,12 @@ class BottomScrollViewCell : UIView{
             make.width.equalTo(self).dividedBy(1.1)
         }
     }
-    init(value : [String:String], parameterName : String){
+    init(value : [String:Double], parameter : ParameterUnits){
         self.value = value
-        self.parameterName = parameterName
+        self.parameter = parameter
         super.init(frame: .zero)
-        valueLabel.text = value[defaultUnits[parameterName]!]
-        unitsLabel.text = parameterName + ", " + defaultUnits[parameterName]!
+        valueLabel.text = String(value[parameter.primaryUnit]!)
+        unitsLabel.text = parameter.parameterName + ", " + parameter.primaryUnit
         NotificationCenter.default.addObserver(self, selector: #selector(updateLabels), name: NSNotification.Name("updateCellLabels"), object: nil)
         createCell()
     }
@@ -66,8 +66,8 @@ class BottomScrollViewCell : UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    @objc func updateLabels(notification : NSNotification){
-        valueLabel.text = value[defaultUnits[parameterName]!]
-        unitsLabel.text = parameterName + ", " + defaultUnits[parameterName]!
+    @objc private func updateLabels(notification : NSNotification){
+        valueLabel.text = String(value[parameter.primaryUnit]!)
+        unitsLabel.text = parameter.parameterName + ", " + parameter.primaryUnit
     }
 }

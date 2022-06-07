@@ -11,15 +11,15 @@ import UBottomSheet
 import Kingfisher
 
 class RocketPageController: UIViewController{
-    var rocket : RocketData?
-    let imgView = UIImageView()
-    let scrollView = UIScrollView()
-    let bottomController = BottomSheetController()
+    public var rocket : RocketData?
+    private let imgView = UIImageView()
+    private let scrollView = UIScrollView()
+    private let bottomController = BottomSheetController()
     private var alreadyHasSheet = false
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomController.rocket = rocket
-        var randomIngUrl = rocket?.images.randomElement()
+        var randomIngUrl = rocket?.flickr_images!.randomElement()
         imgView.contentMode = .scaleToFill
         imgView.kf.setImage(with: URL(string: randomIngUrl!))
         let refreshControl = UIRefreshControl()
@@ -48,8 +48,8 @@ class RocketPageController: UIViewController{
             }
         }
     }
-    @objc func onPullUp(sender : UIRefreshControl){
-        let newRandomImage = rocket?.images.randomElement()
+    @objc private func onPullUp(sender : UIRefreshControl){
+        let newRandomImage = rocket?.flickr_images!.randomElement()
         imgView.kf.setImage(with: URL(string: newRandomImage!))
         sender.endRefreshing()
     }

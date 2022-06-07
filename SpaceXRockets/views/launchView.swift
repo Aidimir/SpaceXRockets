@@ -10,10 +10,9 @@ import UIKit
 import SnapKit
 
 class LaunchView : UIView{
-    var name : String
-    var launchInfo : [String:String]
-    let view = UIView()
-    let nameLabel : UILabel = {
+    private let launchInfo : RocketLaunchInfo
+    private let view = UIView()
+    private let nameLabel : UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 40)
         label.textColor = .white
@@ -21,20 +20,20 @@ class LaunchView : UIView{
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    let successImg : UIImageView = {
+    private let successImg : UIImageView = {
         let img = UIImage(named: "success")
         let imgView = UIImageView(image: img)
         imgView.contentMode = .scaleAspectFit
         return imgView
     }()
-    let failureImg : UIImageView = {
+    private let failureImg : UIImageView = {
         let img = UIImage(named: "failure")
         let imgView = UIImageView(image: img)
         imgView.contentMode = .scaleAspectFit
         return imgView
     }()
 
-    let dateLabel : UILabel = {
+    private let dateLabel : UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 25)
         label.textColor = UIColor(red: 0.142, green: 0.142, blue: 0.142, alpha: 1)
@@ -42,21 +41,20 @@ class LaunchView : UIView{
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    init(launchInfo : [String:String], name : String){
+    init(launchInfo : RocketLaunchInfo){
         self.launchInfo = launchInfo
-        self.name = name
         super.init(frame: .zero)
-        nameLabel.text = name
-        dateLabel.text = launchInfo["date"]
+        nameLabel.text = launchInfo.name
+        dateLabel.text = launchInfo.date_utc
         setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setup(){
+    private func setup(){
         var imgView = UIImageView()
-        if launchInfo["success"] == "true"{
+        if launchInfo.success!{
             imgView = successImg
         }
         else{

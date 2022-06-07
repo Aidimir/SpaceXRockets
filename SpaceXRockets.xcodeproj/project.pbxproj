@@ -17,6 +17,8 @@
 		9D63613827E89E16002EDA8F /* launchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D63613727E89E16002EDA8F /* launchView.swift */; };
 		9DAC807227F046B20008B7C9 /* data_model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC807027F046B20008B7C9 /* data_model.xcdatamodeld */; };
 		9DAC807627F073390008B7C9 /* data_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC807527F073390008B7C9 /* data_manager.swift */; };
+		9DB80EC8284F760A001BD69F /* rocket_launch_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB80EC7284F760A001BD69F /* rocket_launch_info.swift */; };
+		9DB80ECA284F7634001BD69F /* units_parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB80EC9284F7634001BD69F /* units_parameter.swift */; };
 		9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFB927E30830007EC913 /* AppDelegate.swift */; };
 		9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBB27E30830007EC913 /* SceneDelegate.swift */; };
 		9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFBD27E30830007EC913 /* ViewController.swift */; };
@@ -32,7 +34,7 @@
 		9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF527E3B115007EC913 /* presenter.swift */; };
 		9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */; };
 		9DF6EFFA27E3B9BC007EC913 /* bottom_scrollView_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */; };
-		9DF6F00027E4504A007EC913 /* default_units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFF27E4504A007EC913 /* default_units.swift */; };
+		9DF6F00027E4504A007EC913 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6EFFF27E4504A007EC913 /* settings.swift */; };
 		FA22F549D776A733D8382CAD /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		9D63613727E89E16002EDA8F /* launchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchView.swift; sourceTree = "<group>"; };
 		9DAC807127F046B20008B7C9 /* data_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = data_model.xcdatamodel; sourceTree = "<group>"; };
 		9DAC807527F073390008B7C9 /* data_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_manager.swift; sourceTree = "<group>"; };
+		9DB80EC7284F760A001BD69F /* rocket_launch_info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rocket_launch_info.swift; sourceTree = "<group>"; };
+		9DB80EC9284F7634001BD69F /* units_parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = units_parameter.swift; sourceTree = "<group>"; };
 		9DE1924E2803561200506A09 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		9DE1924F2803561200506A09 /* gf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gf.gif; sourceTree = "<group>"; };
 		9DE192502803561200506A09 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -92,7 +96,7 @@
 		9DF6EFF527E3B115007EC913 /* presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = presenter.swift; sourceTree = "<group>"; };
 		9DF6EFF727E3B719007EC913 /* bottom_scrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView.swift; sourceTree = "<group>"; };
 		9DF6EFF927E3B9BC007EC913 /* bottom_scrollView_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottom_scrollView_cell.swift; sourceTree = "<group>"; };
-		9DF6EFFF27E4504A007EC913 /* default_units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = default_units.swift; sourceTree = "<group>"; };
+		9DF6EFFF27E4504A007EC913 /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		C970B9F543445AFCCB1F5027 /* Pods_SpaceXRockets_SpaceXRocketsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceXRockets_SpaceXRocketsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22D42DA8C4C0F67D0AEC391 /* Pods-SpaceXRocketsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRocketsTests.release.xcconfig"; path = "Target Support Files/Pods-SpaceXRocketsTests/Pods-SpaceXRocketsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9B8301E461CE1D8B803CB84 /* Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpaceXRockets-SpaceXRocketsUITests/Pods-SpaceXRockets-SpaceXRocketsUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,8 +254,10 @@
 			children = (
 				9DF6EFEC27E36D07007EC913 /* network_service.swift */,
 				9DF6EFF327E39ED0007EC913 /* rocket_data.swift */,
-				9DF6EFFF27E4504A007EC913 /* default_units.swift */,
+				9DF6EFFF27E4504A007EC913 /* settings.swift */,
 				9D63612B27E49818002EDA8F /* useful_methods.swift */,
+				9DB80EC7284F760A001BD69F /* rocket_launch_info.swift */,
+				9DB80EC9284F7634001BD69F /* units_parameter.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -508,7 +514,9 @@
 				9D63613827E89E16002EDA8F /* launchView.swift in Sources */,
 				9D63612C27E49818002EDA8F /* useful_methods.swift in Sources */,
 				9DF6EFF827E3B719007EC913 /* bottom_scrollView.swift in Sources */,
+				9DB80EC8284F760A001BD69F /* rocket_launch_info.swift in Sources */,
 				9DF6EFF627E3B115007EC913 /* presenter.swift in Sources */,
+				9DB80ECA284F7634001BD69F /* units_parameter.swift in Sources */,
 				9D63613027E76098002EDA8F /* settings_page_controller.swift in Sources */,
 				9D63613427E77ABF002EDA8F /* cellUnitsToggle.swift in Sources */,
 				9DF6EFED27E36D07007EC913 /* network_service.swift in Sources */,
@@ -516,7 +524,7 @@
 				9DF6EFF427E39ED0007EC913 /* rocket_data.swift in Sources */,
 				9D63613627E899E8002EDA8F /* launches_page_controller.swift in Sources */,
 				9DF6EFF227E39972007EC913 /* bottom_sheet_controller.swift in Sources */,
-				9DF6F00027E4504A007EC913 /* default_units.swift in Sources */,
+				9DF6F00027E4504A007EC913 /* settings.swift in Sources */,
 				9DF6EFBE27E30830007EC913 /* ViewController.swift in Sources */,
 				9DF6EFBA27E30830007EC913 /* AppDelegate.swift in Sources */,
 				9DF6EFBC27E30830007EC913 /* SceneDelegate.swift in Sources */,

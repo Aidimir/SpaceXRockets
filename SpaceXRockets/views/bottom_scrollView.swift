@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class BottomScrollView : UIView{
-    var cells : [BottomScrollViewCell]
+    private let cells : [BottomScrollViewCell]
     private let stackView : UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
