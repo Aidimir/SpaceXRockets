@@ -14,8 +14,32 @@ class BottomSheetController: UIViewController,Draggable{
     private var scroll = UIScrollView()
     public var rocket : RocketData?
     private let launchesController = LaunchesPageController()
-    private func construct() {
-        var cellArray = createCells(data: rocket!)
+    public var sheetCoordinator: UBottomSheetCoordinator?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let presenter = BottomSheetPresenter()
+        presenter.view = self
+        NotificationCenter.default.addObserver(self, selector: #selector(extremleCloseSheet), name: NSNotification.Name("closeSheet"), object: nil)
+        view.backgroundColor = .black
+        launchesController.modalPresentationStyle = .fullScreen
+        launchesController.allRocketLaunches = rocket?.launchesInfo
+        launchesController.name = rocket?.name
+        sheetCoordinator?.startTracking(item: self)
+        presenter.build(data: rocket)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sheetCoordinator?.setPosition(view.frame.maxY/1.25, animated: false)
+        sheetCoordinator?.startTracking(item: self)
+    }
+    
+    func draggableView() -> UIScrollView? {
+        return scroll
+    }
+}
+extension BottomSheetController : BottomSheetView{
+    internal func construct(cellArray : [BottomScrollViewCell]) {
         let header : UILabel = {
             let label = UILabel()
             label.textColor = .white
@@ -88,41 +112,8 @@ class BottomSheetController: UIViewController,Draggable{
             make.bottom.height.left.right.width.equalToSuperview()
         }
     }
-    public var sheetCoordinator: UBottomSheetCoordinator?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(extremleCloseSheet), name: NSNotification.Name("closeSheet"), object: nil)
-        view.backgroundColor = .black
-        launchesController.modalPresentationStyle = .fullScreen
-        launchesController.allRocketLaunches = rocket?.launchesInfo
-        launchesController.name = rocket?.name
-        if rocket != nil{
-            construct()
-            sheetCoordinator?.startTracking(item: self)
-        }
-    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        sheetCoordinator?.setPosition(view.frame.maxY/1.25, animated: false)
-        sheetCoordinator?.startTracking(item: self)
-    }
-    
-    func draggableView() -> UIScrollView? {
-        return scroll
-    }
-    
-    private func createCells(data : RocketData) -> [BottomScrollViewCell]{
-        let settings = Settings.shared
-        let heightCell = BottomScrollViewCell(value: [settings.heightParameter.primaryUnit : data.height.meters, settings.heightParameter.secondaryUnit : data.height.feet], parameter: settings.heightParameter)
-        let diameterCell = BottomScrollViewCell(value: [settings.diameterParameter.primaryUnit : data.diameter.meters, settings.diameterParameter.secondaryUnit : data.diameter.feet], parameter: settings.diameterParameter)
-        let massCell = BottomScrollViewCell(value: [settings.massParameter.primaryUnit : Double(data.mass.kg), settings.massParameter.secondaryUnit : Double(data.mass.lb)], parameter: settings.massParameter)
-        let payloadWeightsCell = BottomScrollViewCell(value: [settings.payloadWeightsParameter.primaryUnit : Double(data.payload_weights[0].lb ?? -1), settings.payloadWeightsParameter.secondaryUnit : Double(data.payload_weights[0].kg ?? -1)], parameter: settings.massParameter)
-        let array = [heightCell,diameterCell,massCell,payloadWeightsCell]
-        return array
-    }
-    
-    private func createLabel(name : String, data : String) -> UIStackView{
+    internal func createLabel(name : String, data : String) -> UIStackView{
         let nameLabel : UILabel = {
             let nameLabel = UILabel()
             nameLabel.font = .systemFont(ofSize: 20)
@@ -151,7 +142,7 @@ class BottomSheetController: UIViewController,Draggable{
         return stack
     }
     
-    private func createStageLabels(stageInfo : RocketData.Stage?, stageName : String)-> UIStackView{
+    internal func createStageLabels(stageInfo : RocketData.Stage?, stageName : String)-> UIStackView{
         let header : UILabel = {
             let label = UILabel()
             label.textColor = .white
@@ -184,11 +175,11 @@ class BottomSheetController: UIViewController,Draggable{
             return stack}
     }
     
-    private func createNoNameStack(data : RocketData) -> UIStackView{
+    internal func createNoNameStack(data : RocketData) -> UIStackView{
         let label0 = createLabel(name: "Первый запуск", data: rocket!.first_flight!)
         let label1 = createLabel(name: "Страна", data: rocket!.country)
         if let launchCost = rocket?.cost_per_launch{
-            let message = "$" + String(removeUselessZero(num: Double(launchCost) / 1000000)) + " млн"
+            let message = "$" + String(UsefulThings().removeUselessZero(num: Double(launchCost) / 1000000)) + " млн"
             let label2 = createLabel(name: "Стоимость запуска", data: message)
             let noNameLabelStack : UIStackView = {
                 let stack = UIStackView(arrangedSubviews: [label0,label1,label2])
@@ -210,7 +201,7 @@ class BottomSheetController: UIViewController,Draggable{
             return noNameLabelStack
         }
     }
-    private func createButton()-> UIButton{
+    internal func createButton()-> UIButton{
         let button = UIButton()
         button.addTarget(self, action: #selector(showAllLaunches), for: .touchUpInside)
         button.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 0.5)
@@ -230,7 +221,7 @@ class BottomSheetController: UIViewController,Draggable{
         }
         return button
     }
-    @objc private func onTap(){
+    @objc internal func onTap(){
         present(SettingPageController(), animated: true, completion: nil)
     }
     @objc private func showAllLaunches(){
@@ -247,7 +238,7 @@ class BottomSheetController: UIViewController,Draggable{
         }
         return button
     }
-    @objc private func extremleCloseSheet(){
+    @objc internal func extremleCloseSheet(){
         if UIApplication.shared.statusBarOrientation == .landscapeLeft{
             sheetCoordinator?.setPosition(view.frame.minY/1.25, animated: false)
         }

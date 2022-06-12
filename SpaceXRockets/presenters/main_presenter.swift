@@ -6,16 +6,21 @@
 //
 
 import Foundation
-import UIKit
-import SwiftyJSON
 import CoreData
+
 protocol UserPresenterDelegate {
     func presentRockets(rocketsArray : [RocketData])
     func errorHandler()
 }
-typealias PresenterDelegate = UserPresenterDelegate & UIViewController
-class Presenter {
-    weak var delegate : PresenterDelegate?
+
+protocol MainPresenterProtocol{
+    func fetchData()
+    func setDelegate(delegate : PresenterDelegate)
+}
+
+typealias PresenterDelegate = UserPresenterDelegate
+class Presenter : MainPresenterProtocol{
+    var delegate : PresenterDelegate?
     func fetchData(){
         NetworkService().getData { [weak self] allRockets in
             if allRockets != nil{

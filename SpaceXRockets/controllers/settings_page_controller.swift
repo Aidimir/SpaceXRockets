@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class SettingPageController : UIViewController{
+    private let presenter = SettingsPresenter()
     private let label : UILabel = {
         let label = UILabel()
         label.text = "Настройки"
@@ -45,7 +46,8 @@ class SettingPageController : UIViewController{
         view.backgroundColor = UIColor(red: 0.18, green: 0.18, blue: 0.18, alpha: 1)
         let allParams = [Settings.shared.heightParameter, Settings.shared.payloadWeightsParameter,Settings.shared.massParameter, Settings.shared.diameterParameter]
         for param in allParams.sorted{$0.parameterName<$1.parameterName} {
-            stack.addArrangedSubview( SettingsButton(parameter: param))
+            let settingsButton = SettingsButton(parameter: param)
+            stack.addArrangedSubview( settingsButton)
         }
         view.addSubview(label)
         label.snp.makeConstraints { make in
@@ -112,5 +114,8 @@ class SettingPageController : UIViewController{
             }
             super.viewWillTransition(to: size, with: coordinator)
         }
+    }
+    deinit {
+        print("DEINITED CONTROLLER")
     }
 }

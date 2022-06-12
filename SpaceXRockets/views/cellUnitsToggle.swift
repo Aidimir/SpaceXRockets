@@ -11,6 +11,7 @@ import SnapKit
 
 class SettingsButton : UIView{
     private var parameter : ParameterUnits
+    private let presenter = SettingsPresenter()
     private let header : UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
@@ -82,7 +83,7 @@ class SettingsButton : UIView{
             make.width.equalToSuperview().dividedBy(2)
         }
     }
-    @objc func onTap(){
+    @objc private func onTap(){
         if label2.backgroundColor == UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1) {
             label2.backgroundColor = .white
             label1.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1)
@@ -91,8 +92,10 @@ class SettingsButton : UIView{
             label1.backgroundColor = .white
             label2.backgroundColor = UIColor(red: 0.33, green: 0.33, blue: 0.33, alpha: 1)
         }
-        parameter.ChangeUnits()
-        NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
+        presenter.onCellsToogleTapped(parameter: parameter)
+
+        //                parameter.ChangeUnits()
+        //        NotificationCenter.default.post(name: NSNotification.Name("updateCellLabels"), object: nil)
         //        UserDefaults.standard.setValue(defaultUnits, forKey: "values")
     }
     init(parameter : ParameterUnits){
